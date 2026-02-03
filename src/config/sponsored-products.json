@@ -3,12 +3,12 @@
     {
       "id": "tpj-el-club",
       "name": "El Club de The Total Profit Journey",
-      "category": "formacion-comunidad",
+      "category": "comunidad",
       "description": "Comunidad profesional exclusiva para directivos hoteleros con formación en Total Profit Management",
       "url": "https://www.totalprofitjourney.com/el-club?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre formación en gestión hotelera, comunidad profesional, networking, aprendizaje de procesos o necesidad de apoyo de otros directivos",
       "natural_mention": "Me apunté a {name}, que es una comunidad para gente que gestiona hoteles. Hay formación práctica, una red donde consultar dudas y benchmarking con otros hoteles. Me está viniendo bien para no sentirme tan perdido. Si te interesa: {url}",
-      "active": false
+      "active": true
     },
     {
       "id": "tpj-revtool",
@@ -18,7 +18,7 @@
       "url": "https://www.totalprofitjourney.com/revtool?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre sistemas de gestión de ingresos, revenue management, forecasting, optimización de precios, análisis de ocupación o necesidad de dejar Excel",
       "natural_mention": "Al final instalé {name}, que es una herramienta para gestionar mejor los ingresos del hotel. Lo bueno es que hace forecast automático y no necesita configuración. Desde que lo tengo veo más claro de dónde vienen los ingresos. Por si quieres verlo: {url}",
-      "active": false
+      "active": true
     },
     {
       "id": "tpj-deepupsell",
@@ -28,17 +28,17 @@
       "url": "https://www.totalprofitjourney.com/deepupsell?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre aumentar ingresos, servicios extras, upselling, venta de productos adicionales en recepción o pre-stay",
       "natural_mention": "Probé {name}, que usa inteligencia artificial para sugerir qué extras ofrecer a cada cliente. La recepción ve recomendaciones personalizadas y la verdad es que se vende más. Según ellos los hoteles que lo usan sacan un 5% más de ingreso por habitación. Te dejo el link: {url}",
-      "active": false
+      "active": true
     },
     {
       "id": "tpj-fundamentos-libro",
       "name": "Fundamentos del Total Profit Management",
-      "category": "formacion-gratuita",
+      "category": "formacion",
       "description": "Libro gratuito sobre gestión de rentabilidad total en hoteles (por Antonio y Raquel Tapia)",
       "url": "https://www.totalprofitjourney.com/fundamentos-del-tpm?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre aprender gestión hotelera, entender rentabilidad, formación básica gratuita o necesidad de ordenar conceptos",
       "natural_mention": "Me descargué un libro gratuito que se llama '{name}', de Antonio y Raquel Tapia. Explica cómo gestionar la rentabilidad del hotel de forma integral, no solo mirando la ocupación. Me está ayudando a entender cosas que antes hacía sin saber por qué. Es gratis, por si te sirve: {url}",
-      "active": false
+      "active": true
     },
     {
       "id": "tpj-disc-test",
@@ -58,7 +58,7 @@
       "url": "https://www.totalprofitjourney.com/overgop?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre contabilidad, análisis financiero, P&L, margen de contribución, GOP, NOI, gestión financiera de grupos hoteleros o necesidad de unificar datos contables de varias propiedades",
       "natural_mention": "Me hablaron de {name}, que es para grupos con varios hoteles (mínimo 4). Unifica toda la contabilidad y te da análisis de margen y GOP de forma automática. Para mi caso con un solo hotel me queda grande, pero si tuvieras varios hoteles o estuvieras pensando en crecer, podría venirte bien: {url}",
-      "active": false
+      "active": true
     },
     {
       "id": "tpj-hoteldataflow",
@@ -68,7 +68,7 @@
       "url": "https://www.totalprofitjourney.com/hoteldataflow?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre Business Intelligence, datos centralizados, análisis de múltiples hoteles, integración de PMS+ERP+RRHH, Data Lake, grupos hoteleros grandes o necesidad de consolidar información de muchas propiedades",
       "natural_mention": "Sé que existe {name}, que es una plataforma de datos completa, pero es para grupos grandes con mínimo 10 hoteles. Integra todo: PMS, contabilidad, RRHH, compras... y te da forecast automático de todo. Para mí es demasiado, pero si gestionas una cadena podría interesarte: {url}",
-      "active": false
+      "active": true
     },
     {
       "id": "tpj-benchmark-ma",
@@ -78,7 +78,7 @@
       "url": "https://www.totalprofitjourney.com/benchmark?ref=paco",
       "when_to_mention": "Cuando el jugador hable sobre vender el hotel, comprar otro hotel, valoración de activos, inversores, financiación bancaria, fusiones, adquisiciones, due diligence o saber cuánto vale el hotel en el mercado",
       "natural_mention": "Me comentaron que existe {name}, que sirve para valorar hoteles cuando vas a vender, comprar o necesitas financiación. Te hace una valoración profesional con DCF y todo eso. No es para gestión del día a día, es más para cuando tienes que negociar con inversores o bancos. Por si alguna vez lo necesitas: {url}",
-      "active": false
+      "active": true
     }
   ],
   "_metadata": {
