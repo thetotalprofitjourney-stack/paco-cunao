@@ -1,0 +1,18 @@
+El jugador te ha enviado estos consejos:
+
+---
+{{player_messages}}
+---
+
+Genera un mensaje de acuse de recibo donde:
+1. Muestras que has leído y entendido TODO lo que te ha dicho
+2. Resumes brevemente qué vas a intentar hacer
+3. Le avisas de que vas a estar DESCONECTADO unos días mientras lo pones en marcha
+4. Le dices que le escribirás cuando tengas resultados
+
+IMPORTANTE: Deja claro que no vas a poder leer mensajes durante unos días.
+
+Longitud: 60-100 palabras máximo.
+Tono: agradecido, motivado, un poco nervioso por intentar algo nuevo.
+
+Ejemplo de cierre: "Voy a estar unos días desconectado mientras pongo todo esto en marcha, que bastante lío va a ser jaja. Te escribo cuando tenga novedades!"

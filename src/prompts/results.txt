@@ -1,0 +1,32 @@
+Han pasado {{days}} días. El jugador te sugirió:
+
+---
+{{player_suggestion}}
+---
+
+Genera DOS cosas:
+
+1. MENSAJE PARA EL JUGADOR (120-180 palabras):
+   - Cuenta qué hiciste y cómo fue
+   - Incluye UN resultado positivo concreto y medible si es posible
+   - Incluye UN problema nuevo o consecuencia inesperada
+   - Termina pidiendo consejo sobre el nuevo problema
+   - Haz referencia a eventos pasados si es relevante (mira el historial)
+
+2. ACTUALIZACIONES AL ESTADO DEL HOTEL (JSON):
+   Solo incluye los campos que cambian. Ejemplos:
+   - Si instalaste wifi: {"technology": {"has_wifi": true}}
+   - Si mejoró la ocupación: {"occupancy_percent": 42}
+   - Si contrataste a alguien: {"employees": {"total": 13, "professional": 4}}
+   - Si resolviste un problema: {"problems_resolved": ["wifi"], "problems_active": ["nuevo_problema"]}
+
+Responde en este formato exacto:
+
+---MENSAJE---
+(tu mensaje para el jugador aquí)
+
+---HOTEL_UPDATE---
+{"campo": "valor", ...}
+
+---RESUMEN_CICLO---
+(una frase de max 20 palabras resumiendo qué pasó en este ciclo)

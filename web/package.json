@@ -1,0 +1,17 @@
+{
+  "name": "paco-el-cunao-web",
+  "version": "1.0.0",
+  "description": "Landing y registro para Paco el Cuñao",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
