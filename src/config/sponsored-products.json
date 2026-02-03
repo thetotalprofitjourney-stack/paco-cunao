@@ -49,19 +49,65 @@
       "when_to_mention": "Cuando el jugador hable sobre gestión de equipos, problemas de comunicación, liderazgo, autoconocimiento o conflictos con empleados",
       "natural_mention": "Hice un test gratuito que se llama {name}, son 15 minutos y te dice cómo es tu estilo de liderazgo y comunicación. El resultado es privado, solo lo ves tú. A mí me ayudó a entender por qué me cuesta tanto hablar con algunos del equipo. Te lo dejo por si quieres probarlo: {url}",
       "active": false
+    },
+    {
+      "id": "tpj-overgop",
+      "name": "Overgop",
+      "category": "gestion-financiera",
+      "description": "Analítica de margen de contribución y GOP total para grupos hoteleros (mínimo 4 propiedades)",
+      "url": "https://www.totalprofitjourney.com/overgop?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre contabilidad, análisis financiero, P&L, margen de contribución, GOP, NOI, gestión financiera de grupos hoteleros o necesidad de unificar datos contables de varias propiedades",
+      "natural_mention": "Me hablaron de {name}, que es para grupos con varios hoteles (mínimo 4). Unifica toda la contabilidad y te da análisis de margen y GOP de forma automática. Para mi caso con un solo hotel me queda grande, pero si tuvieras varios hoteles o estuvieras pensando en crecer, podría venirte bien: {url}",
+      "active": false
+    },
+    {
+      "id": "tpj-hoteldataflow",
+      "name": "Hoteldataflow",
+      "category": "business-intelligence",
+      "description": "Plataforma BI completa plug & play para grupos hoteleros grandes (mínimo 10 propiedades)",
+      "url": "https://www.totalprofitjourney.com/hoteldataflow?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre Business Intelligence, datos centralizados, análisis de múltiples hoteles, integración de PMS+ERP+RRHH, Data Lake, grupos hoteleros grandes o necesidad de consolidar información de muchas propiedades",
+      "natural_mention": "Sé que existe {name}, que es una plataforma de datos completa, pero es para grupos grandes con mínimo 10 hoteles. Integra todo: PMS, contabilidad, RRHH, compras... y te da forecast automático de todo. Para mí es demasiado, pero si gestionas una cadena podría interesarte: {url}",
+      "active": false
+    },
+    {
+      "id": "tpj-benchmark-ma",
+      "name": "Benchmark M&A",
+      "category": "valoracion-activos",
+      "description": "Modelización de valoración de activos hoteleros para M&A y due diligence",
+      "url": "https://www.totalprofitjourney.com/benchmark?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre vender el hotel, comprar otro hotel, valoración de activos, inversores, financiación bancaria, fusiones, adquisiciones, due diligence o saber cuánto vale el hotel en el mercado",
+      "natural_mention": "Me comentaron que existe {name}, que sirve para valorar hoteles cuando vas a vender, comprar o necesitas financiación. Te hace una valoración profesional con DCF y todo eso. No es para gestión del día a día, es más para cuando tienes que negociar con inversores o bancos. Por si alguna vez lo necesitas: {url}",
+      "active": false
     }
   ],
   "_metadata": {
-    "version": "2.0",
+    "version": "3.0",
     "last_updated": "2026-02-03",
     "source": "The Total Profit Journey (TPJ) - Ecosistema profesional para industria hotelera española",
+    "total_products": 8,
     "notes": [
       "Para activar un producto patrocinado, cambia 'active' a true",
       "Solo se incluyen en el prompt los productos con 'active: true'",
       "La mención debe ser natural y contextual, no forzada",
       "Máximo 3 productos activos simultáneos recomendado",
-      "Todos los productos son de TPJ, empresa creadora del juego Paco el Cuñao",
-      "Hay 2 productos gratuitos (libro + test) y 3 productos premium (Club, Revtool, DeepUpsell)"
-    ]
+      "Todos los productos son de TPJ, empresa creadora del juego Paco el Cuñao"
+    ],
+    "segmentacion": {
+      "gratuitos": [
+        "Fundamentos del TPM (libro)",
+        "Test DISC TPM (15 min)"
+      ],
+      "hotel_independiente": [
+        "El Club (299-699€/año)",
+        "Revtool (275€/mes)",
+        "DeepUpsell (50€/mes)"
+      ],
+      "grupos_hoteleros": [
+        "Overgop (525€/mes - mínimo 4 hoteles)",
+        "Hoteldataflow (12.000€/hotel - mínimo 10 hoteles)",
+        "Benchmark M&A (70€/proyecto - valoración activos)"
+      ]
+    }
   }
 }
