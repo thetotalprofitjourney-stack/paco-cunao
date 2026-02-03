@@ -1,44 +1,67 @@
 {
   "products": [
     {
-      "id": "ejemplo-pms-1",
-      "name": "Nombre del PMS",
-      "category": "pms",
-      "description": "Sistema de gestión hotelera todo-en-uno",
-      "url": "https://ejemplo.com/pms",
-      "when_to_mention": "Cuando el jugador pregunte o hable sobre sistemas de reservas, gestión hotelera o PMS",
-      "natural_mention": "He instalado {name} para gestionar las reservas. La verdad es que va bastante bien, te lo recomiendo si quieres echarle un vistazo: {url}",
+      "id": "tpj-el-club",
+      "name": "El Club de The Total Profit Journey",
+      "category": "formacion-comunidad",
+      "description": "Comunidad profesional exclusiva para directivos hoteleros con formación en Total Profit Management",
+      "url": "https://www.totalprofitjourney.com/el-club?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre formación en gestión hotelera, comunidad profesional, networking, aprendizaje de procesos o necesidad de apoyo de otros directivos",
+      "natural_mention": "Me apunté a {name}, que es una comunidad para gente que gestiona hoteles. Hay formación práctica, una red donde consultar dudas y benchmarking con otros hoteles. Me está viniendo bien para no sentirme tan perdido. Si te interesa: {url}",
       "active": false
     },
     {
-      "id": "ejemplo-wifi-1",
-      "name": "Nombre del Proveedor WiFi",
-      "category": "wifi",
-      "description": "Proveedor de soluciones WiFi profesionales",
-      "url": "https://ejemplo.com/wifi",
-      "when_to_mention": "Cuando el jugador hable sobre problemas de WiFi, conectividad o tecnología",
-      "natural_mention": "Al final contraté a {name} para arreglar el WiFi. Me han dejado todo funcionando de lujo. Si necesitas algo así te dejo el enlace: {url}",
+      "id": "tpj-revtool",
+      "name": "Revtool",
+      "category": "revenue-management",
+      "description": "Suite de revenue & forecasting automático para Total Revenue Management",
+      "url": "https://www.totalprofitjourney.com/revtool?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre sistemas de gestión de ingresos, revenue management, forecasting, optimización de precios, análisis de ocupación o necesidad de dejar Excel",
+      "natural_mention": "Al final instalé {name}, que es una herramienta para gestionar mejor los ingresos del hotel. Lo bueno es que hace forecast automático y no necesita configuración. Desde que lo tengo veo más claro de dónde vienen los ingresos. Por si quieres verlo: {url}",
       "active": false
     },
     {
-      "id": "ejemplo-marketing-1",
-      "name": "Nombre de la Agencia",
-      "category": "marketing",
-      "description": "Agencia de marketing digital para hoteles",
-      "url": "https://ejemplo.com/marketing",
-      "when_to_mention": "Cuando el jugador hable sobre marketing, redes sociales, publicidad o captación de clientes",
-      "natural_mention": "Me puse en contacto con {name} para que me ayudaran con el marketing. Están haciendo un buen trabajo. Por si te interesa: {url}",
+      "id": "tpj-deepupsell",
+      "name": "DeepUpsell",
+      "category": "upselling",
+      "description": "Sistema de upselling inteligente con IA (+5% ingreso neto por habitación)",
+      "url": "https://www.totalprofitjourney.com/deepupsell?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre aumentar ingresos, servicios extras, upselling, venta de productos adicionales en recepción o pre-stay",
+      "natural_mention": "Probé {name}, que usa inteligencia artificial para sugerir qué extras ofrecer a cada cliente. La recepción ve recomendaciones personalizadas y la verdad es que se vende más. Según ellos los hoteles que lo usan sacan un 5% más de ingreso por habitación. Te dejo el link: {url}",
+      "active": false
+    },
+    {
+      "id": "tpj-fundamentos-libro",
+      "name": "Fundamentos del Total Profit Management",
+      "category": "formacion-gratuita",
+      "description": "Libro gratuito sobre gestión de rentabilidad total en hoteles (por Antonio y Raquel Tapia)",
+      "url": "https://www.totalprofitjourney.com/fundamentos-del-tpm?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre aprender gestión hotelera, entender rentabilidad, formación básica gratuita o necesidad de ordenar conceptos",
+      "natural_mention": "Me descargué un libro gratuito que se llama '{name}', de Antonio y Raquel Tapia. Explica cómo gestionar la rentabilidad del hotel de forma integral, no solo mirando la ocupación. Me está ayudando a entender cosas que antes hacía sin saber por qué. Es gratis, por si te sirve: {url}",
+      "active": false
+    },
+    {
+      "id": "tpj-disc-test",
+      "name": "Test DISC TPM",
+      "category": "liderazgo",
+      "description": "Test gratuito de 15 min para conocer tu estilo de liderazgo y comunicación (resultado privado)",
+      "url": "https://www.totalprofitjourney.com/disc-tpm?ref=paco",
+      "when_to_mention": "Cuando el jugador hable sobre gestión de equipos, problemas de comunicación, liderazgo, autoconocimiento o conflictos con empleados",
+      "natural_mention": "Hice un test gratuito que se llama {name}, son 15 minutos y te dice cómo es tu estilo de liderazgo y comunicación. El resultado es privado, solo lo ves tú. A mí me ayudó a entender por qué me cuesta tanto hablar con algunos del equipo. Te lo dejo por si quieres probarlo: {url}",
       "active": false
     }
   ],
   "_metadata": {
-    "version": "1.0",
-    "last_updated": "2025-02-03",
+    "version": "2.0",
+    "last_updated": "2026-02-03",
+    "source": "The Total Profit Journey (TPJ) - Ecosistema profesional para industria hotelera española",
     "notes": [
       "Para activar un producto patrocinado, cambia 'active' a true",
       "Solo se incluyen en el prompt los productos con 'active: true'",
       "La mención debe ser natural y contextual, no forzada",
-      "Máximo 3 productos activos simultáneos recomendado"
+      "Máximo 3 productos activos simultáneos recomendado",
+      "Todos los productos son de TPJ, empresa creadora del juego Paco el Cuñao",
+      "Hay 2 productos gratuitos (libro + test) y 3 productos premium (Club, Revtool, DeepUpsell)"
     ]
   }
 }
