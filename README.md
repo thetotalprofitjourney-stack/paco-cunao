@@ -232,6 +232,29 @@ npm run test-ai
 
 Esto te permite probar cómo responde Paco sin necesidad de configurar WhatsApp.
 
+## Monetización: Productos Patrocinados
+
+El juego incluye un sistema opcional de productos patrocinados que permite menciones naturales de marcas cuando son contextualmente relevantes.
+
+**Documentación completa**: Ver [`SPONSORED_PRODUCTS.md`](./SPONSORED_PRODUCTS.md)
+
+**Cómo funciona:**
+- Configura productos patrocinados en `src/config/sponsored-products.json`
+- Paco los menciona de forma natural cuando el contexto lo requiere
+- No es publicidad intrusiva: solo aparece cuando aporta valor a la conversación
+- Ejemplo: Si el jugador pregunta por sistemas de reservas y tienes un PMS patrocinado, Paco lo menciona como algo que él usa
+
+**Activar un producto:**
+```json
+{
+  "id": "mi-producto",
+  "name": "NombreDelProducto",
+  "category": "pms",
+  "url": "https://producto.com",
+  "active": true  ← cambiar a true
+}
+```
+
 ## Soporte
 
 Para issues o consultas, abre un issue en GitHub.

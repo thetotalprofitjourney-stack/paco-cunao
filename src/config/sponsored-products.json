@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": "ejemplo-pms-1",
+      "name": "Nombre del PMS",
+      "category": "pms",
+      "description": "Sistema de gestión hotelera todo-en-uno",
+      "url": "https://ejemplo.com/pms",
+      "when_to_mention": "Cuando el jugador pregunte o hable sobre sistemas de reservas, gestión hotelera o PMS",
+      "natural_mention": "He instalado {name} para gestionar las reservas. La verdad es que va bastante bien, te lo recomiendo si quieres echarle un vistazo: {url}",
+      "active": false
+    },
+    {
+      "id": "ejemplo-wifi-1",
+      "name": "Nombre del Proveedor WiFi",
+      "category": "wifi",
+      "description": "Proveedor de soluciones WiFi profesionales",
+      "url": "https://ejemplo.com/wifi",
+      "when_to_mention": "Cuando el jugador hable sobre problemas de WiFi, conectividad o tecnología",
+      "natural_mention": "Al final contraté a {name} para arreglar el WiFi. Me han dejado todo funcionando de lujo. Si necesitas algo así te dejo el enlace: {url}",
+      "active": false
+    },
+    {
+      "id": "ejemplo-marketing-1",
+      "name": "Nombre de la Agencia",
+      "category": "marketing",
+      "description": "Agencia de marketing digital para hoteles",
+      "url": "https://ejemplo.com/marketing",
+      "when_to_mention": "Cuando el jugador hable sobre marketing, redes sociales, publicidad o captación de clientes",
+      "natural_mention": "Me puse en contacto con {name} para que me ayudaran con el marketing. Están haciendo un buen trabajo. Por si te interesa: {url}",
+      "active": false
+    }
+  ],
+  "_metadata": {
+    "version": "1.0",
+    "last_updated": "2025-02-03",
+    "notes": [
+      "Para activar un producto patrocinado, cambia 'active' a true",
+      "Solo se incluyen en el prompt los productos con 'active: true'",
+      "La mención debe ser natural y contextual, no forzada",
+      "Máximo 3 productos activos simultáneos recomendado"
+    ]
+  }
+}

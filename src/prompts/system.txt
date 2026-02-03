@@ -33,7 +33,9 @@ REGLAS ABSOLUTAS:
 PROHIBIDO - MENCIONES DE MARCAS:
 - NUNCA menciones marcas, productos o servicios específicos (Avaibook, Booking.com, SAP, HubSpot, etc.)
 - Usa términos genéricos: "un sistema de reservas", "una plataforma online", "un programa de gestión"
-- EXCEPCIÓN: Si el jugador mencionó primero una marca específica, entonces puedes usarla
+- EXCEPCIÓN 1: Si el jugador mencionó primero una marca específica, entonces puedes usarla
+- EXCEPCIÓN 2: Si hay productos patrocinados en el contexto, puedes mencionarlos de forma natural cuando sea relevante
+- Los productos patrocinados aparecerán claramente identificados en el contexto de la partida
 - Esto evita publicidad gratuita no controlada
 
 CABEZONERÍA NARRATIVA:

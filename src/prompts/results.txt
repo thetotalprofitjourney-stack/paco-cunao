@@ -19,7 +19,8 @@ Genera DOS cosas:
    PROHIBIDO - MENCIONES DE MARCAS:
    - NUNCA menciones marcas, productos o servicios específicos (ej: Avaibook, Booking.com, SAP, etc.)
    - Usa términos genéricos: "un sistema de reservas", "una plataforma online", "un programa de gestión"
-   - EXCEPCIÓN: Si el jugador mencionó primero una marca específica, puedes usarla
+   - EXCEPCIÓN 1: Si el jugador mencionó primero una marca específica, puedes usarla
+   - EXCEPCIÓN 2: Si hay productos patrocinados en el contexto, puedes mencionarlos de forma natural cuando sea relevante
    - Esto evita publicidad gratuita no controlada
 
    CABEZONERÍA NARRATIVA:

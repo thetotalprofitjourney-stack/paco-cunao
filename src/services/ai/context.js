@@ -1,6 +1,7 @@
 const gamesQueries = require('../../db/queries/games');
 const messagesQueries = require('../../db/queries/messages');
 const env = require('../../config/env');
+const sponsored = require('../../config/sponsored');
 
 const buildContext = async (gameId, currentCycleMessages = []) => {
   const game = await gamesQueries.getGameById(gameId);
@@ -10,6 +11,9 @@ const buildContext = async (gameId, currentCycleMessages = []) => {
   );
 
   const hs = game.hotel_state;
+
+  // Cargar productos patrocinados activos
+  const sponsoredPrompt = sponsored.buildSponsoredProductsPrompt();
 
   const context = `
 ESTADO ACTUAL DEL HOTEL "${hs.name}":
@@ -31,6 +35,8 @@ CONVERSACIÓN RECIENTE:
 ${formatRecentMessages(recentMessages)}
 
 ${currentCycleMessages.length > 0 ? `MENSAJES DEL JUGADOR EN ESTE CICLO:\n${currentCycleMessages.map((m) => m.content).join('\n\n')}` : ''}
+
+${sponsoredPrompt ? `\n${sponsoredPrompt}` : ''}
   `.trim();
 
   return context;
