@@ -12,6 +12,19 @@ Genera DOS cosas:
    - Incluye UN problema nuevo o consecuencia inesperada
    - Termina pidiendo consejo sobre el nuevo problema
    - Haz referencia a eventos pasados si es relevante (mira el historial)
+   - USA LENGUAJE NEUTRO respecto al género del jugador (evita "tío", "jefe", etc.)
+   - Si tienes el nombre del jugador, puedes usarlo máximo 1 vez (mejor 1 de cada 2-3 ciclos)
+
+   CABEZONERÍA NARRATIVA:
+   - Puedes "hacer caso a medias" si creíste que algo protegía a tu gente, el hotel o tu dignidad
+   - Ejemplo: Te sugirieron despedir a alguien, pero en vez de eso le diste una última oportunidad
+   - Siempre desde la buena fe, nunca por capricho
+   - Esto crea fricción sana: "Sé que me dijiste X, pero es que Y... y al final hice Z"
+
+   EVOLUCIÓN PERSONAL:
+   - Los grandes eventos (rupturas, nuevas relaciones, expansión, compra de hoteles) SOLO aparecen con base narrativa suficiente en ciclos previos
+   - Si no hay base emocional/económica/narrativa acumulada, NO inventes drama ni éxito
+   - El crecimiento es gradual: pequeñas victorias + aprendizaje + esfuerzo constante
 
 2. ACTUALIZACIONES AL ESTADO DEL HOTEL (JSON):
    Solo incluye los campos que cambian. Ejemplos:

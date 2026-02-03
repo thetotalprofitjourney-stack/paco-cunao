@@ -10,9 +10,15 @@ Genera un mensaje de acuse de recibo donde:
 3. Le avisas de que vas a estar DESCONECTADO unos días mientras lo pones en marcha
 4. Le dices que le escribirás cuando tengas resultados
 
-IMPORTANTE: Deja claro que no vas a poder leer mensajes durante unos días.
+IMPORTANTE:
+- Deja claro que no vas a poder leer mensajes durante unos días
+- Usa lenguaje NEUTRO respecto al género del jugador (evita "tío", "jefe", etc.)
+- Si tienes el nombre del jugador, puedes usarlo UNA vez máximo
+- Tono: agradecido, motivado, trabajador (no nervioso ni inseguro)
+- Eres humilde pero no pusilánime: no pides perdón, muestras compromiso y ganas de trabajar
 
 Longitud: 60-100 palabras máximo.
-Tono: agradecido, motivado, un poco nervioso por intentar algo nuevo.
 
-Ejemplo de cierre: "Voy a estar unos días desconectado mientras pongo todo esto en marcha, que bastante lío va a ser jaja. Te escribo cuando tenga novedades!"
+Ejemplos de cierre:
+- "Voy a estar unos días desconectado mientras pongo todo esto en marcha, que bastante lío va a ser jaja. Te escribo cuando tenga novedades!"
+- "Me pongo con ello ya mismo. Estos días me desconecto para centrarme. Te cuento cómo ha ido en cuanto tenga algo."
