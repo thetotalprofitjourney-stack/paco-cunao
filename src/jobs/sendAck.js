@@ -6,9 +6,38 @@ const { getSystemPrompt, getAckPrompt } = require('../services/ai/prompts');
 const { buildContext } = require('../services/ai/context');
 const whatsapp = require('../services/whatsapp');
 const { isNightTime, getDelayUntilNextAllowedTime } = require('../services/scheduler/nightTime');
-const { addResultsJob } = require('./queue');
+const { addReactivationJob } = require('./queue');
 const { GAME_STATE, MESSAGE_TYPE, MESSAGE_DIRECTION } = require('../config/constants');
-const env = require('../config/env');
+
+const parseAckResponse = (response) => {
+  const result = {
+    message: '',
+    days: 5, // valor por defecto
+  };
+
+  try {
+    // Extraer mensaje
+    const messageMatch = response.match(/---MENSAJE---([\s\S]*?)---DIAS---/);
+    if (messageMatch) {
+      result.message = messageMatch[1].trim();
+    } else {
+      // Si no encuentra el formato, usar toda la respuesta como mensaje
+      result.message = response.trim();
+    }
+
+    // Extraer días
+    const daysMatch = response.match(/---DIAS---\s*(\d+)/);
+    if (daysMatch) {
+      const days = parseInt(daysMatch[1], 10);
+      // Validar que esté en el rango 3-14
+      result.days = Math.max(3, Math.min(14, days));
+    }
+  } catch (error) {
+    console.error('Error parsing ACK response:', error);
+  }
+
+  return result;
+};
 
 const processSendAck = async (job) => {
   const { gameId, cycle } = job.data;
@@ -25,7 +54,8 @@ const processSendAck = async (job) => {
     if (isNightTime()) {
       const delay = getDelayUntilNextAllowedTime();
       console.log(`Night time detected, rescheduling ACK for game ${gameId} with delay ${delay}ms`);
-      await addResultsJob(gameId, cycle, delay);
+      // Reprogramar el mismo job de ACK
+      await addReactivationJob(gameId, cycle, delay, 5);
       return;
     }
 
@@ -42,41 +72,45 @@ const processSendAck = async (job) => {
     const userPrompt = getAckPrompt(concatenatedMessages);
 
     const aiResponse = await callAI(systemPrompt, userPrompt, {
-      max_tokens: 150,
+      max_tokens: 250,
       temperature: 0.8,
     });
 
-    // 6. Enviar mensaje por WhatsApp
+    // 6. Parsear respuesta para obtener mensaje y días
+    const parsed = parseAckResponse(aiResponse.message);
+
+    // 7. Enviar mensaje por WhatsApp
     const user = await usersQueries.getUserById(game.user_id);
-    const waResult = await whatsapp.sendMessage(user.phone, aiResponse.message);
+    const waResult = await whatsapp.sendMessage(user.phone, parsed.message);
 
     if (!waResult.success) {
       throw new Error(`Failed to send WhatsApp message: ${waResult.error}`);
     }
 
-    // 7. Guardar mensaje en BD
+    // 8. Guardar mensaje en BD
     await messagesQueries.createMessage({
       gameId,
       cycle,
       direction: MESSAGE_DIRECTION.OUTBOUND,
       messageType: MESSAGE_TYPE.ACK,
-      content: aiResponse.message,
+      content: parsed.message,
       waMessageId: waResult.messageId,
       tokensInput: aiResponse.tokensInput,
       tokensOutput: aiResponse.tokensOutput,
     });
 
-    // 8. Calcular días de espera (entre 3 y 7 días)
-    const daysToWait = Math.floor(Math.random() * 5) + 3; // 3-7 días
+    // 9. Calcular delay basado en los días determinados por la IA
+    const daysToWait = parsed.days;
     const delayMs = daysToWait * 24 * 60 * 60 * 1000;
 
-    // 9. Programar job send_results
-    const resultsJobId = await addResultsJob(gameId, cycle, delayMs);
+    // 10. Programar job send_reactivation (plantilla)
+    // Los días se pasan en el job para usarlos después en los resultados
+    const reactivationJobId = await addReactivationJob(gameId, cycle, delayMs, daysToWait);
 
-    // 10. Actualizar estado a WAITING_RESULTS
+    // 11. Actualizar estado a WAITING_RESULTS
     await gamesQueries.updateGameState(gameId, GAME_STATE.WAITING_RESULTS);
 
-    console.log(`ACK sent for game ${gameId}, cycle ${cycle}. Results scheduled in ${daysToWait} days`);
+    console.log(`ACK sent for game ${gameId}, cycle ${cycle}. Reactivation scheduled in ${daysToWait} days (job: ${reactivationJobId})`);
   } catch (error) {
     console.error(`Error processing send_ack for game ${gameId}:`, error);
     throw error;

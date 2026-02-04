@@ -23,12 +23,25 @@ const addConsolidationJob = async (gameId, cycle) => {
   return job.id;
 };
 
-const addResultsJob = async (gameId, cycle, delayMs) => {
+const addReactivationJob = async (gameId, cycle, delayMs, daysElapsed) => {
   const job = await gameQueue.add(
-    'send_results',
-    { gameId, cycle },
+    'send_reactivation',
+    { gameId, cycle, daysElapsed },
     {
       delay: delayMs,
+      jobId: `reactivation-${gameId}-${cycle}-${Date.now()}`,
+    }
+  );
+
+  return job.id;
+};
+
+const addResultsJob = async (gameId, cycle, daysElapsed) => {
+  // Este job se ejecuta inmediatamente después de que el jugador responda a la plantilla
+  const job = await gameQueue.add(
+    'send_results',
+    { gameId, cycle, daysElapsed },
+    {
       jobId: `results-${gameId}-${cycle}-${Date.now()}`,
     }
   );
@@ -53,6 +66,7 @@ const cancelJob = async (jobId) => {
 module.exports = {
   gameQueue,
   addConsolidationJob,
+  addReactivationJob,
   addResultsJob,
   cancelJob,
 };

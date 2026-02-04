@@ -14,6 +14,7 @@ module.exports = {
   whatsappMetaToken: process.env.WHATSAPP_META_TOKEN,
   whatsappPhoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
   whatsappVerifyToken: process.env.WHATSAPP_VERIFY_TOKEN,
+  whatsappReactivationTemplate: process.env.WHATSAPP_REACTIVATION_TEMPLATE || 'paco_novedades',
 
   // OpenAI
   openaiApiKey: process.env.OPENAI_API_KEY,
@@ -25,8 +26,7 @@ module.exports = {
 
   // Tiempos (en milisegundos)
   consolidationWindowMs: parseInt(process.env.CONSOLIDATION_WINDOW_MS || '1800000'), // 30 minutos
-  minResultsDelayMs: parseInt(process.env.MIN_RESULTS_DELAY_MS || '259200000'), // 3 días
-  maxResultsDelayMs: parseInt(process.env.MAX_RESULTS_DELAY_MS || '604800000'), // 7 días
+  // Nota: Los días de espera (3-14) ahora los determina la IA según la complejidad del cambio
 
   // Horario nocturno (hora española)
   nightStartHour: parseInt(process.env.NIGHT_START_HOUR || '22'),

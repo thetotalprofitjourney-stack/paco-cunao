@@ -5,6 +5,7 @@ const provider = require(`./${env.whatsappProvider}`);
 
 module.exports = {
   sendMessage: provider.sendMessage,
+  sendTemplate: provider.sendTemplate,
   verifyWebhook: provider.verifyWebhook,
   parseIncomingMessage: provider.parseIncomingMessage,
 };

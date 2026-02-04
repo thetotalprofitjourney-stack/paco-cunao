@@ -11,6 +11,8 @@ const GAME_STATE = {
   CONSOLIDATING: 'consolidating',
   SENDING_ACK: 'sending_ack',
   WAITING_RESULTS: 'waiting_results',
+  SENDING_REACTIVATION: 'sending_reactivation',
+  WAITING_REACTIVATION: 'waiting_reactivation',
   SENDING_RESULTS: 'sending_results',
 };
 
@@ -19,6 +21,7 @@ const MESSAGE_TYPE = {
   PLAYER_INPUT: 'player_input',
   TRIGGER: 'trigger',
   ACK: 'ack',
+  REACTIVATION: 'reactivation',
   RESULTS: 'results',
 };
 
@@ -31,6 +34,7 @@ const MESSAGE_DIRECTION = {
 // Tipos de job
 const JOB_TYPE = {
   SEND_ACK: 'send_ack',
+  SEND_REACTIVATION: 'send_reactivation',
   SEND_RESULTS: 'send_results',
 };
 

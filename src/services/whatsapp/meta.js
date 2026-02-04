@@ -3,6 +3,40 @@ const env = require('../../config/env');
 const getApiUrl = () =>
   `https://graph.facebook.com/v18.0/${env.whatsappPhoneNumberId}/messages`;
 
+const sendTemplate = async (phone, templateName, languageCode = 'es', components = []) => {
+  try {
+    const response = await fetch(getApiUrl(), {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.whatsappMetaToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messaging_product: 'whatsapp',
+        to: phone.replace('+', ''),
+        type: 'template',
+        template: {
+          name: templateName,
+          language: { code: languageCode },
+          components: components.length > 0 ? components : undefined,
+        },
+      }),
+    });
+
+    const data = await response.json();
+    return {
+      success: response.ok,
+      messageId: data.messages?.[0]?.id,
+      error: data.error?.message,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+};
+
 const sendMessage = async (phone, text) => {
   try {
     const response = await fetch(getApiUrl(), {
@@ -68,6 +102,7 @@ const parseIncomingMessage = (webhookBody) => {
 
 module.exports = {
   sendMessage,
+  sendTemplate,
   parseIncomingMessage,
   verifyWebhook,
 };
