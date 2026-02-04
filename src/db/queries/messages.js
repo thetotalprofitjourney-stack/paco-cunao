@@ -9,13 +9,14 @@ const createMessage = async ({
   waMessageId = null,
   tokensInput = null,
   tokensOutput = null,
+  metadata = null,
 }) => {
   const query = `
     INSERT INTO messages (
       game_id, cycle, direction, message_type, content,
-      wa_message_id, tokens_input, tokens_output, created_at
+      wa_message_id, tokens_input, tokens_output, metadata, created_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())
     RETURNING *
   `;
   const result = await db.query(query, [
@@ -27,6 +28,7 @@ const createMessage = async ({
     waMessageId,
     tokensInput,
     tokensOutput,
+    metadata,
   ]);
   return result.rows[0];
 };
@@ -78,10 +80,23 @@ const getPlayerMessagesByCycle = async (gameId, cycle) => {
   return result.rows;
 };
 
+const getLastMessageByType = async (gameId, messageType) => {
+  const query = `
+    SELECT * FROM messages
+    WHERE game_id = $1
+      AND message_type = $2
+    ORDER BY created_at DESC
+    LIMIT 1
+  `;
+  const result = await db.query(query, [gameId, messageType]);
+  return result.rows[0];
+};
+
 module.exports = {
   createMessage,
   getMessagesByGame,
   getMessagesByCycle,
   getMessagesFromLastNCycles,
   getPlayerMessagesByCycle,
+  getLastMessageByType,
 };

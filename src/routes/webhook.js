@@ -2,8 +2,12 @@ const usersQueries = require('../db/queries/users');
 const gamesQueries = require('../db/queries/games');
 const messagesQueries = require('../db/queries/messages');
 const whatsapp = require('../services/whatsapp');
-const { shouldProcessMessage, shouldIgnoreMessage } = require('../services/game/stateMachine');
-const { addConsolidationJob, cancelJob } = require('../jobs/queue');
+const {
+  shouldProcessMessage,
+  shouldIgnoreMessage,
+  isWaitingForReactivation,
+} = require('../services/game/stateMachine');
+const { addConsolidationJob, addResultsJob, cancelJob } = require('../jobs/queue');
 const { getTriggerPrompt } = require('../services/ai/prompts');
 const {
   GAME_STATE,
@@ -90,7 +94,7 @@ async function webhookRoutes(fastify, options) {
       // 9. Actualizar actividad del usuario
       await usersQueries.updateUserActivity(user.id);
 
-      // 10. Gestionar timer de consolidación
+      // 10. Gestionar según estado del juego
       if (game.state === GAME_STATE.WAITING_PLAYER) {
         // Primera mensaje → crear job y cambiar a CONSOLIDATING
         const jobId = await addConsolidationJob(game.id, game.current_cycle + 1);
@@ -103,6 +107,27 @@ async function webhookRoutes(fastify, options) {
         }
         const jobId = await addConsolidationJob(game.id, game.current_cycle + 1);
         await gamesQueries.updateGameConsolidation(game.id, jobId);
+      } else if (isWaitingForReactivation(game.state)) {
+        // Jugador respondió a la plantilla de reactivación → disparar resultados
+        // Obtener los días transcurridos del mensaje de reactivación
+        const reactivationMessage = await messagesQueries.getLastMessageByType(
+          game.id,
+          MESSAGE_TYPE.REACTIVATION
+        );
+
+        let daysElapsed = 5; // valor por defecto
+        if (reactivationMessage?.metadata) {
+          try {
+            const metadata = JSON.parse(reactivationMessage.metadata);
+            daysElapsed = metadata.daysElapsed || 5;
+          } catch (e) {
+            console.error('Error parsing reactivation metadata:', e);
+          }
+        }
+
+        // Disparar job de resultados inmediatamente
+        await addResultsJob(game.id, game.current_cycle + 1, daysElapsed);
+        console.log(`Player responded to reactivation - sending results for game ${game.id}`);
       }
 
       return reply.code(200).send({ status: 'processed' });

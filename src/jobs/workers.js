@@ -1,6 +1,7 @@
 const { Worker } = require('bullmq');
 const env = require('../config/env');
 const { processSendAck } = require('./sendAck');
+const { processSendReactivation } = require('./sendReactivation');
 const { processSendResults } = require('./sendResults');
 
 const connection = {
@@ -16,6 +17,8 @@ const gameWorker = new Worker(
 
     if (job.name === 'send_ack') {
       await processSendAck(job);
+    } else if (job.name === 'send_reactivation') {
+      await processSendReactivation(job);
     } else if (job.name === 'send_results') {
       await processSendResults(job);
     } else {

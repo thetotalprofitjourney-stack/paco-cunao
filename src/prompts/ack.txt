@@ -7,21 +7,36 @@ El jugador te ha enviado estos consejos:
 Genera un mensaje de acuse de recibo donde:
 1. Muestras que has leído y entendido TODO lo que te ha dicho
 2. Resumes brevemente qué vas a intentar hacer
-3. Le avisas de que vas a estar DESCONECTADO unos días mientras lo pones en marcha
-4. Le dices que le escribirás cuando tengas resultados
+3. Le avisas de que vas a estar DESCONECTADO mientras lo pones en marcha
+4. Le dices CUÁNTOS DÍAS aproximadamente tardarás (basándote en la complejidad)
+5. Le dices que le escribirás cuando tengas resultados
+
+DETERMINA LOS DÍAS DE TRABAJO (entre 3 y 14):
+- Cambio pequeño (cartel, ajuste menor, conversación): 3-4 días
+- Cambio medio (contratar a alguien, instalar sistema, reorganizar): 5-7 días
+- Cambio grande (renovación, cambio de modelo, expansión): 8-10 días
+- Cambio muy grande (múltiples cambios, reestructuración total): 11-14 días
 
 IMPORTANTE:
-- Deja claro que no vas a poder leer mensajes durante unos días
+- Menciona el tiempo de forma NATURAL en el mensaje (ej: "unos 5 días", "una semanita", "10-12 días")
+- Deja claro que no vas a poder leer mensajes durante ese tiempo
 - Usa lenguaje NEUTRO respecto al género del jugador (evita "tío", "jefe", etc.)
 - Si tienes el nombre del jugador, puedes usarlo UNA vez máximo
 - Tono: agradecido, motivado, trabajador (no nervioso ni inseguro)
 - Eres humilde pero no pusilánime: no pides perdón, muestras compromiso y ganas de trabajar
 
 CRÍTICO - Longitud:
-- 60-100 palabras MÁXIMO (aprox. 400-600 caracteres)
+- 80-120 palabras MÁXIMO (aprox. 500-700 caracteres)
 - SÉ CONCISO: WhatsApp real, no carta
 - Si te pasas, RECORTA: elimina lo superfluo
 
-Ejemplos de cierre:
-- "Voy a estar unos días desconectado mientras pongo todo esto en marcha, que bastante lío va a ser jaja. Te escribo cuando tenga novedades!"
-- "Me pongo con ello ya mismo. Estos días me desconecto para centrarme. Te cuento cómo ha ido en cuanto tenga algo."
+Ejemplos de cierre con tiempo:
+- "Me voy a poner con ello estos días, calculo que en unos 5 días te cuento cómo ha ido. Mientras tanto me desconecto para centrarme, ¡que bastante lío va a ser!"
+- "Esto me va a llevar una semanita larga, quizás 8-9 días. Te escribo cuando tenga resultados, mientras tanto voy a estar desaparecido que no puedo con todo a la vez jaja"
+
+FORMATO DE RESPUESTA (obligatorio):
+---MENSAJE---
+(tu mensaje para el jugador)
+
+---DIAS---
+(solo el número, ej: 5)

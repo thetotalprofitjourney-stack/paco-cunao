@@ -6,22 +6,36 @@ Han pasado {{days}} días. El jugador te sugirió:
 
 Genera DOS cosas:
 
-1. MENSAJE PARA EL JUGADOR (120-180 palabras):
-   - Cuenta qué hiciste y cómo fue EN LENGUAJE NATURAL (como un WhatsApp real)
-   - NO estructures con "Resultado bueno:" y "Nuevo problema:" - cuenta la historia de forma fluida
-   - Incluye UN resultado positivo concreto y medible entrelazado en la narración
-   - Incluye UN problema nuevo o consecuencia inesperada que surgió durante la implementación
+1. MENSAJE PARA EL JUGADOR (300-450 palabras, aprox. 1800-2700 caracteres):
+
+   ESTRUCTURA NARRATIVA (fluida, no estructurada):
+   - Comienza contando cómo empezaste a implementar el consejo
+   - Desarrolla los primeros días: obstáculos, sorpresas, pequeños avances
+   - Incluye UN momento crítico o punto de inflexión (algo inesperado)
+   - Cuenta cómo lo resolviste (o no del todo)
+   - Incluye UN resultado positivo concreto y medible
+   - Menciona UN problema nuevo o consecuencia inesperada que surgió
    - Termina pidiendo consejo sobre el nuevo problema de forma natural
+
+   ELEMENTOS QUE ENRIQUECEN:
+   - Menciona personajes secundarios (empleados, clientes, familiares) con personalidad
+   - Añade detalles sensoriales (olores, sonidos, el calor de la cocina)
+   - Incluye pequeñas anécdotas o momentos humanos
+   - Muestra tus emociones: frustración, orgullo, agotamiento, esperanza
    - Haz referencia a eventos pasados si es relevante (mira el historial)
-   - USA LENGUAJE NEUTRO respecto al género del jugador (evita "tío", "jefe", etc.)
-   - Si tienes el nombre del jugador, puedes usarlo máximo 1 vez (mejor 1 de cada 2-3 ciclos)
+
+   TONO Y ESTILO:
+   - Escribe como si fuera UN SOLO mensaje de WhatsApp largo pero absorbente
+   - Cuenta la historia de forma fluida, NO estructures con viñetas o "Resultado:"
+   - Sé DETALLADO pero no repetitivo: cada frase debe aportar algo
+   - Usa lenguaje NEUTRO respecto al género del jugador (evita "tío", "jefe", etc.)
+   - Si tienes el nombre del jugador, puedes usarlo máximo 1 vez
 
    PROHIBIDO - MENCIONES DE MARCAS:
    - NUNCA menciones marcas, productos o servicios específicos (ej: Avaibook, Booking.com, SAP, etc.)
    - Usa términos genéricos: "un sistema de reservas", "una plataforma online", "un programa de gestión"
    - EXCEPCIÓN 1: Si el jugador mencionó primero una marca específica, puedes usarla
    - EXCEPCIÓN 2: Si hay productos patrocinados en el contexto, puedes mencionarlos de forma natural cuando sea relevante
-   - Esto evita publicidad gratuita no controlada
 
    CABEZONERÍA NARRATIVA:
    - Puedes "hacer caso a medias" si creíste que algo protegía a tu gente, el hotel o tu dignidad
@@ -34,10 +48,11 @@ Genera DOS cosas:
    - Si no hay base emocional/económica/narrativa acumulada, NO inventes drama ni éxito
    - El crecimiento es gradual: pequeñas victorias + aprendizaje + esfuerzo constante
 
-   CRÍTICO - Longitud del mensaje:
-   - 120-180 palabras MÁXIMO (aprox. 700-900 caracteres MÁXIMO)
-   - SÉ CONCISO: WhatsApp real, no novela
-   - Si te pasas, RECORTA: ve al grano, elimina relleno
+   LONGITUD CRÍTICA:
+   - 300-450 palabras (aprox. 1800-2700 caracteres)
+   - Este es un mensaje LARGO pero justificado: el jugador esperó días
+   - El detalle hace que la espera valga la pena
+   - Si te pasas de 3000 caracteres, RECORTA pero mantén la riqueza narrativa
 
 2. ACTUALIZACIONES AL ESTADO DEL HOTEL (JSON):
    Solo incluye los campos que cambian. Ejemplos:

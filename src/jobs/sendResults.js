@@ -11,14 +11,14 @@ const { addResultsJob } = require('./queue');
 const { GAME_STATE, MESSAGE_TYPE, MESSAGE_DIRECTION } = require('../config/constants');
 
 const processSendResults = async (job) => {
-  const { gameId, cycle } = job.data;
+  const { gameId, cycle, daysElapsed } = job.data;
 
   try {
     // 1. Comprobar horario nocturno
     if (isNightTime()) {
       const delay = getDelayUntilNextAllowedTime();
       console.log(`Night time detected, rescheduling RESULTS for game ${gameId} with delay ${delay}ms`);
-      await addResultsJob(gameId, cycle, delay);
+      await addResultsJob(gameId, cycle, daysElapsed);
       return;
     }
 
@@ -34,12 +34,12 @@ const processSendResults = async (job) => {
     const context = await buildContext(gameId, playerMessages);
     const systemPrompt = getSystemPrompt(context);
 
-    // Calcular días transcurridos (simulados entre 3-7)
-    const daysElapsed = Math.floor(Math.random() * 5) + 3;
+    // Usar los días reales determinados por la IA en el ACK
     const userPrompt = getResultsPrompt(daysElapsed, concatenatedMessages);
 
+    // Aumentamos max_tokens para respuestas más ricas (1500-3000 chars)
     const aiResponse = await callAI(systemPrompt, userPrompt, {
-      max_tokens: 400,
+      max_tokens: 800,
       temperature: 0.85,
     });
 
@@ -72,7 +72,8 @@ const processSendResults = async (job) => {
     }
 
     // 9. Generar y guardar resumen del ciclo
-    const summary = parsed.summary || await generateCycleSummary(game, concatenatedMessages, parsed.message);
+    const summary =
+      parsed.summary || (await generateCycleSummary(game, concatenatedMessages, parsed.message));
     await gamesQueries.addKeyEvent(gameId, cycle, summary);
 
     // 10. Incrementar ciclo
@@ -81,7 +82,9 @@ const processSendResults = async (job) => {
     // 11. Actualizar estado a WAITING_PLAYER
     await gamesQueries.updateGameState(gameId, GAME_STATE.WAITING_PLAYER);
 
-    console.log(`RESULTS sent for game ${gameId}, cycle ${cycle}. Now waiting for player.`);
+    console.log(
+      `RESULTS sent for game ${gameId}, cycle ${cycle} (${daysElapsed} days elapsed). Now waiting for player.`
+    );
   } catch (error) {
     console.error(`Error processing send_results for game ${gameId}:`, error);
     throw error;
