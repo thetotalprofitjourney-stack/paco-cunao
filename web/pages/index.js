@@ -29,7 +29,7 @@ export default function Home() {
         setSuccess(true);
         setInstructions(data.instructions);
       } else {
-        setError(data.error || 'Error al registrarse');
+        setError(data.error || 'No se ha podido completar el registro. Comprueba los datos e inténtalo de nuevo');
       }
     } catch (err) {
       setError('Error de conexión. Inténtalo de nuevo.');

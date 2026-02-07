@@ -1,10 +1,12 @@
 const gamesQueries = require('../../db/queries/games');
+const usersQueries = require('../../db/queries/users');
 const messagesQueries = require('../../db/queries/messages');
 const env = require('../../config/env');
 const sponsored = require('../../config/sponsored');
 
 const buildContext = async (gameId, currentCycleMessages = []) => {
   const game = await gamesQueries.getGameById(gameId);
+  const user = await usersQueries.getUserById(game.user_id);
   const recentMessages = await messagesQueries.getMessagesFromLastNCycles(
     gameId,
     env.recentCyclesToInclude
@@ -16,6 +18,8 @@ const buildContext = async (gameId, currentCycleMessages = []) => {
   const sponsoredPrompt = sponsored.buildSponsoredProductsPrompt();
 
   const context = `
+JUGADOR: ${user.name}
+
 ESTADO ACTUAL DEL HOTEL "${hs.name}":
 - Estrellas: ${hs.stars}
 - Habitaciones: ${hs.rooms} (${hs.occupancy_percent}% ocupación)
