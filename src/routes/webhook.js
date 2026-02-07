@@ -56,7 +56,16 @@ async function webhookRoutes(fastify, options) {
       let user = await usersQueries.getUserByPhone(phone);
 
       if (!user) {
-        return reply.code(200).send({ status: 'ignored', reason: 'user not found' });
+        // Enviar mensaje automático para usuarios no registrados
+        const notRegisteredMessage = `Hola, lo siento pero no tengo tu contacto guardado!
+
+Si es para lo del hotel, sólo me fío de los contactos que me llegan por Antonio y Raquel, de La Comunidad TPM.
+
+Pídeles que te recomienden en este enlace, te llevará unos segundos:
+https://totalprofitjourney.com/help_paco`;
+
+        await whatsapp.sendMessage(phone, notRegisteredMessage);
+        return reply.code(200).send({ status: 'not_registered' });
       }
 
       // 5. Si está pending_activation, activarlo y enviar trigger

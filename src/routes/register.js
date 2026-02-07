@@ -10,7 +10,7 @@ async function registerRoutes(fastify, options) {
       if (!name || !phone) {
         return reply.code(400).send({
           success: false,
-          error: 'Name and phone are required',
+          error: 'Necesitamos tu nombre y número de teléfono para recomendarte a Paco',
         });
       }
 
@@ -19,7 +19,7 @@ async function registerRoutes(fastify, options) {
       if (!phoneRegex.test(phone)) {
         return reply.code(400).send({
           success: false,
-          error: 'Invalid phone format. Use E.164 format (e.g., +34612345678)',
+          error: 'El formato del teléfono no es válido. Tiene que empezar por + y el código de país, por ejemplo: +34612345678',
         });
       }
 
@@ -28,7 +28,7 @@ async function registerRoutes(fastify, options) {
       if (existingUser) {
         return reply.code(409).send({
           success: false,
-          error: 'User already registered with this phone number',
+          error: 'Este número ya está registrado. Si eres tú, ya puedes escribir a Paco directamente. Si no, habla con Antonio o Raquel de La Comunidad TPM',
         });
       }
 
@@ -40,14 +40,14 @@ async function registerRoutes(fastify, options) {
 
       return reply.code(201).send({
         success: true,
-        message: 'User registered successfully',
+        message: '¡Perfecto! Ya estás en la lista de Paco',
         instructions: `Guarda el número ${process.env.WHATSAPP_NUMBER || '+34XXXXXXXXX'} y escríbele: "Hola Paco, ¿en qué puedo ayudarte?"`,
       });
     } catch (error) {
       console.error('Error registering user:', error);
       return reply.code(500).send({
         success: false,
-        error: 'Internal server error',
+        error: 'Vaya, algo ha fallado por nuestra parte. Inténtalo de nuevo en unos minutos o escríbenos a soporte',
       });
     }
   });
