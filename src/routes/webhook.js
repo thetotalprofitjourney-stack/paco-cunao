@@ -16,6 +16,13 @@ const {
   USER_STATUS,
 } = require('../config/constants');
 
+// Mensaje automático cuando el jugador envía audio/imagen/etc
+const NON_TEXT_RESPONSE = `¡Uy! Perdona, me ha llegado algo pero no lo puedo abrir 😅
+
+Este móvil que tengo es más viejo que el hotel, y con los audios y las fotos va fatal. A veces los abre, a veces no, y cuando los abre se queda pillado media hora.
+
+¿Te importa escribírmelo? Así seguro que me llega bien. ¡Gracias!`;
+
 async function webhookRoutes(fastify, options) {
   // Webhook para recibir mensajes de WhatsApp
   fastify.post('/webhook/whatsapp', async (request, reply) => {
@@ -23,20 +30,36 @@ async function webhookRoutes(fastify, options) {
       // 1. Parsear mensaje entrante
       const incomingMessage = whatsapp.parseIncomingMessage(request.body);
 
-      if (!incomingMessage || !incomingMessage.text) {
-        return reply.code(200).send({ status: 'ignored', reason: 'no text message' });
+      if (!incomingMessage) {
+        return reply.code(200).send({ status: 'ignored', reason: 'no message' });
       }
 
       const phone = `+${incomingMessage.from}`;
 
-      // 2. Buscar usuario por teléfono
+      // 2. Si es audio, imagen, video, etc. → responder que el móvil va fatal
+      if (incomingMessage.isNonText) {
+        // Solo respondemos si el usuario existe (evita spam a números desconocidos)
+        const user = await usersQueries.getUserByPhone(phone);
+        if (user && user.status !== USER_STATUS.PENDING_ACTIVATION) {
+          await whatsapp.sendMessage(phone, NON_TEXT_RESPONSE);
+          console.log(`Non-text message (${incomingMessage.type}) from ${phone} - sent fallback response`);
+        }
+        return reply.code(200).send({ status: 'non_text_handled', type: incomingMessage.type });
+      }
+
+      // 3. Si no hay texto, ignorar
+      if (!incomingMessage.text) {
+        return reply.code(200).send({ status: 'ignored', reason: 'empty text' });
+      }
+
+      // 4. Buscar usuario por teléfono
       let user = await usersQueries.getUserByPhone(phone);
 
       if (!user) {
         return reply.code(200).send({ status: 'ignored', reason: 'user not found' });
       }
 
-      // 3. Si está pending_activation, activarlo y enviar trigger
+      // 5. Si está pending_activation, activarlo y enviar trigger
       if (user.status === USER_STATUS.PENDING_ACTIVATION) {
         user = await usersQueries.updateUserStatus(user.id, USER_STATUS.ACTIVE);
 
@@ -58,30 +81,30 @@ async function webhookRoutes(fastify, options) {
         return reply.code(200).send({ status: 'activated', user: user.id });
       }
 
-      // 4. Si no está activo, ignorar
+      // 6. Si no está activo, ignorar
       if (user.status !== USER_STATUS.ACTIVE) {
         return reply.code(200).send({ status: 'ignored', reason: 'user not active' });
       }
 
-      // 5. Obtener game del usuario
+      // 7. Obtener game del usuario
       const game = await gamesQueries.getGameByUserId(user.id);
 
       if (!game) {
         return reply.code(200).send({ status: 'ignored', reason: 'game not found' });
       }
 
-      // 6. Verificar si debemos ignorar el mensaje (estado WAITING_RESULTS)
+      // 8. Verificar si debemos ignorar el mensaje (estado WAITING_RESULTS)
       if (shouldIgnoreMessage(game.state)) {
         console.log(`Ignoring message from ${phone} - game in state ${game.state}`);
         return reply.code(200).send({ status: 'ignored', reason: 'waiting_results' });
       }
 
-      // 7. Procesar según estado del juego
+      // 9. Procesar según estado del juego
       if (!shouldProcessMessage(game.state)) {
         return reply.code(200).send({ status: 'ignored', reason: 'invalid_state' });
       }
 
-      // 8. Guardar mensaje del jugador
+      // 10. Guardar mensaje del jugador
       await messagesQueries.createMessage({
         gameId: game.id,
         cycle: game.current_cycle + 1,
@@ -91,10 +114,10 @@ async function webhookRoutes(fastify, options) {
         waMessageId: incomingMessage.messageId,
       });
 
-      // 9. Actualizar actividad del usuario
+      // 11. Actualizar actividad del usuario
       await usersQueries.updateUserActivity(user.id);
 
-      // 10. Gestionar según estado del juego
+      // 12. Gestionar según estado del juego
       if (game.state === GAME_STATE.WAITING_PLAYER) {
         // Primera mensaje → crear job y cambiar a CONSOLIDATING
         const jobId = await addConsolidationJob(game.id, game.current_cycle + 1);
