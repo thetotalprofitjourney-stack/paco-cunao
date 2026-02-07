@@ -41,12 +41,17 @@ const parseIncomingMessage = (webhookBody) => {
 
     if (!message) return null;
 
+    // Tipos de mensaje que no son texto
+    const NON_TEXT_TYPES = ['audio', 'image', 'video', 'document', 'sticker', 'location', 'contacts'];
+    const isNonText = NON_TEXT_TYPES.includes(message.type);
+
     return {
       from: message.from,
       text: message.text?.body || '',
       timestamp: new Date(parseInt(message.timestamp) * 1000),
       messageId: message.id,
       type: message.type,
+      isNonText,
     };
   } catch (error) {
     console.error('Error parsing incoming message:', error);
