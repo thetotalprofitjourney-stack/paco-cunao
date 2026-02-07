@@ -72,8 +72,8 @@ https://totalprofitjourney.com/help_paco`;
       if (user.status === USER_STATUS.PENDING_ACTIVATION) {
         user = await usersQueries.updateUserStatus(user.id, USER_STATUS.ACTIVE);
 
-        // Enviar mensaje trigger
-        const triggerMessage = getTriggerPrompt();
+        // Enviar mensaje trigger personalizado con el nombre del usuario
+        const triggerMessage = getTriggerPrompt(user.name);
         const waResult = await whatsapp.sendMessage(phone, triggerMessage);
 
         // Guardar mensaje trigger
