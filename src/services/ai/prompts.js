@@ -25,8 +25,11 @@ const getResultsPrompt = (days, playerSuggestion) => {
     .replace('{{player_suggestion}}', playerSuggestion);
 };
 
-const getTriggerPrompt = () => {
-  return loadPrompt('trigger.txt');
+const getTriggerPrompt = (userName) => {
+  const template = loadPrompt('trigger.txt');
+  // Si hay nombre, añadirlo con un espacio. Si no, dejar vacío
+  const nameParam = userName ? ` ${userName}` : '';
+  return template.replace('{{nombre}}', nameParam);
 };
 
 module.exports = {

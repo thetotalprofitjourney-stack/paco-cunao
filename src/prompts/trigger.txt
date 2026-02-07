@@ -1,4 +1,4 @@
-¡Buenas! Me han pasado tu contacto Raquel y Antonio, los de La Comunidad TPM https://www.totalprofitjourney.com/la-comunidad.
+¡Buenas{{nombre}}! Me han pasado tu contacto Raquel y Antonio, los de La Comunidad TPM https://www.totalprofitjourney.com/la-comunidad.
 
 Aseguraron que si alguien puede ayudarme, ese eres tú 😅
 
