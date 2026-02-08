@@ -1,4 +1,4 @@
-# Paco el Cuñao
+# Ayuda a Paco
 
 ## Juego conversacional asíncrono por WhatsApp
 
@@ -6,7 +6,7 @@
 
 ## 1. RESUMEN DEL PROYECTO
 
-**Paco el Cuñao** es un juego de rol conversacional donde el jugador actúa como consultor de Paco, un tipo entrañable que ha heredado un hotel caótico y necesita ayuda para gestionarlo.
+**Ayuda a Paco** es un juego de rol conversacional donde el jugador actúa como consultor de Paco, un tipo entrañable que ha heredado un hotel caótico y necesita ayuda para gestionarlo.
 
 El juego funciona íntegramente por WhatsApp. El jugador da consejos, Paco los implementa (con resultados mixtos), y vuelve pidiendo ayuda con los nuevos problemas que surgen. No hay guion predefinido: una IA genera las respuestas de Paco basándose en el historial de cada jugador.
 

@@ -1,13 +1,50 @@
-# Paco el Cuñao 🏨
+# Ayuda a Paco 🏨
 
-Juego conversacional asíncrono por WhatsApp donde ayudas a Paco, un tipo entrañable que ha heredado un hotel caótico y necesita ayuda para gestionarlo.
+Juego conversacional asíncrono por WhatsApp donde ayudas a Paco, un tipo entrañable que heredó el **Hotel Villa Carmen** (90 habitaciones) en Badajoz, España. Paco no tiene experiencia en hostelería y gestiona a toda su familia extendida trabajando en el hotel. **Te necesita** para tomar decisiones y ayudarle a mantener el negocio familiar a flote.
 
 ## Características
 
-- **100% por WhatsApp**: Todo el juego ocurre en conversaciones de WhatsApp
-- **IA Generativa**: Cada partida es única, Paco responde según tus consejos usando GPT-4o-mini
-- **Ritmo tranquilo**: ~5 intercambios al mes, ideal para jugar sin presión
-- **Narrativa emergente**: No hay guion predefinido, la historia evoluciona según tus decisiones
+- **🏨 Hotel Real**: 90 habitaciones, 5 departamentos, familia trabajadora, problemas reales de gestión
+- **📱 100% por WhatsApp**: Todo el juego ocurre en conversaciones de WhatsApp
+- **🤖 IA Generativa**: Cada partida es única, Paco responde según tus consejos usando GPT-4o-mini
+- **⏱️ Ritmo tranquilo**: ~5 intercambios al mes, ideal para jugar sin presión
+- **📖 Narrativa emergente**: No hay guion predefinido, la historia evoluciona según tus decisiones
+- **👨‍👩‍👧‍👦 Personajes definidos**: Familia extendida con personalidades, conflictos y objetivos únicos
+
+## 🎬 Contexto del Juego
+
+### El Hotel Villa Carmen
+- **Ubicación**: Badajoz, España (ciudad interior, no playa)
+- **Capacidad**: 90 habitaciones, 3 estrellas
+- **Año**: Fundado en 1985, arquitectura años 90-2000
+- **Estado**: Funcional pero caótico - "demasiados cocineros en la cocina"
+
+### Paco - El Protagonista
+- **Edad**: 52 años, ex-administrativo de seguros
+- **Situación**: Heredó el hotel hace 6 meses de su tío fallecido
+- **Problema**: Sin experiencia hotelera + familia extendida trabajando = caos organizativo
+- **Necesidad**: **TU AYUDA** para tomar decisiones y gestionar el hotel
+
+### La Familia Trabajadora (Todos adultos 30s-60s)
+- **Manolo** (cuñado): Jefe de Mantenimiento - Gruñón, "no hay presupuesto"
+- **Lucía** (prima): Jefa de Limpieza - Perfeccionista, "siempre se ha hecho así"
+- **Carlos** (primo): Recepcionista - Estresado, primera línea con quejas
+- **Antonio** (tío): Chef - Artista orgulloso, pide ingredientes caros
+- **Mercedes** (esposa): Coordinadora - Voz de la razón que nadie escucha
+- **Carmen** (madre): Fundadora - Sabia pero desactualizada tecnológicamente
+
+**Ver contexto completo en**: [`HOTEL_CONTEXT.md`](./HOTEL_CONTEXT.md)
+
+## 🌐 Landing Page de Registro
+
+La web de registro presenta:
+- **Hero image full-screen**: Fotografía cinematográfica de Paco, su familia y el Hotel Villa Carmen
+- **Formulario flotante inferior**: Glassmorphism, no invasivo, responsive
+- **Info popup**: Explicación del juego sin saturar (mantiene la intriga)
+- **Logo WhatsApp**: Integrado en el campo de teléfono
+- **CTA emocional**: "Quiero ayudar a Paco"
+
+**Diseñado para embeber en Kajabi** mediante iframe o código personalizado.
 
 ## Arquitectura
 
@@ -122,32 +159,63 @@ npm start
 ## Estructura del Proyecto
 
 ```
-paco-el-cunao/
+ayuda-a-paco/
 ├── src/
-│   ├── config/          # Configuración (env, constants)
+│   ├── config/          # Configuración (env, constants, sponsored products)
 │   ├── db/              # Base de datos (client, queries, migrations)
 │   ├── routes/          # Rutas del API (webhook, register, health)
 │   ├── services/        # Servicios (WhatsApp, AI, game, scheduler)
 │   ├── jobs/            # Jobs de BullMQ (sendAck, sendResults)
 │   ├── prompts/         # Templates de prompts para la IA
 │   └── index.js         # Entry point del servidor
-├── web/                 # Aplicación Next.js para registro
-├── scripts/             # Scripts de utilidad
+├── web/                 # Aplicación Next.js para landing/registro
+│   ├── pages/           # index.js (hero image + formulario flotante)
+│   ├── styles/          # CSS Modules + globals (glassmorphism, responsive)
+│   └── public/          # hero_paco.webp (imagen de fondo del hotel)
+├── scripts/             # Scripts de utilidad (migrate, seed, test-ai)
 ├── tests/               # Tests
+├── HOTEL_CONTEXT.md     # 🎯 Contexto canónico: personajes, hotel, Badajoz
+├── PACO_PROFILE.md      # Perfil detallado de Paco (personalidad, historia)
+├── GPT_CONFIG.md        # Configuración de prompts de IA
 └── docker-compose.yml   # PostgreSQL + Redis para desarrollo
 ```
 
 ## Flujo del Juego
 
-1. **Registro**: Usuario se registra en la web con nombre y teléfono
-2. **Activación**: Usuario envía primer mensaje por WhatsApp a Paco
-3. **Trigger**: Paco responde con el mensaje inicial explicando su situación
-4. **Ciclo de juego**:
-   - Jugador envía consejos (se consolidan durante 30 minutos)
-   - Paco envía ACK (acuse de recibo) y avisa que estará desconectado
-   - Espera de 3-7 días
-   - Paco envía RESULTS (qué pasó, qué funcionó, qué problema nuevo surgió)
-   - Vuelve al inicio del ciclo
+### 1. **Registro** (Landing Page)
+- Usuario ve la imagen de Paco y el Hotel Villa Carmen
+- Rellena formulario: Nombre + WhatsApp
+- Recibe confirmación con instrucciones
+
+### 2. **Activación** (Primer contacto por WhatsApp)
+- Usuario envía primer mensaje por WhatsApp al número de Paco
+- Paco responde presentándose: "Acabo de heredar este hotel... no sé por dónde empezar"
+- Establece el tono: cercano, vulnerable, necesita ayuda real
+
+### 3. **Ciclo de Juego** (Asíncrono, ~5 intercambios/mes)
+
+#### Fase 1: Problema (TRIGGER)
+Paco te cuenta una situación real del hotel:
+- Overbooking en plena temporada
+- Manolo y Antonio peleándose por la campana extractora
+- Cliente VIP quejándose, Carlos estresado
+- Presupuesto ajustado, decisiones difíciles
+
+#### Fase 2: Consulta (30 min de consolidación)
+- Jugador envía consejos/preguntas (WhatsApp las consolida 30 min)
+- Paco envía **ACK**: "Recibido, lo voy a pensar y te cuento"
+- Indica cuándo volverá con resultados
+
+#### Fase 3: Resultados (3-7 días después)
+- Paco cuenta **qué pasó** según tus consejos
+- Qué funcionó, qué salió mal, consecuencias
+- Menciones de personajes reaccionando
+- Introduce **nuevo problema** (siguiente ciclo)
+
+#### Fase 4: Loop
+Vuelve a Fase 1 con nueva situación emergente
+
+**La IA hace que cada partida sea única** - Paco recuerda tus decisiones anteriores y el hotel evoluciona según tus consejos.
 
 ## Configuración de WhatsApp
 

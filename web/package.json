@@ -1,7 +1,7 @@
 {
-  "name": "paco-el-cunao-web",
+  "name": "ayuda-a-paco-web",
   "version": "1.0.0",
-  "description": "Landing y registro para Paco el Cuñao",
+  "description": "Landing y registro para Ayuda a Paco",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",

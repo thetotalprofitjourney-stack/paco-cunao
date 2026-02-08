@@ -1,6 +1,6 @@
 # 🏨 CONTEXTO DEL HOTEL VILLA CARMEN Y PERSONAJES
 
-> **Documento fundamental**: Este archivo define el universo narrativo de "Paco el Cuñao", incluyendo la descripción visual canónica de todos los personajes, el hotel, y la ciudad de Badajoz.
+> **Documento fundamental**: Este archivo define el universo narrativo de "Ayuda a Paco", incluyendo la descripción visual canónica de todos los personajes, el hotel, y la ciudad de Badajoz.
 
 ---
 
