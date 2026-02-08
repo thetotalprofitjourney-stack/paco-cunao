@@ -1,4 +1,4 @@
-# Configuración del Custom GPT "Paco el Cuñao"
+# Configuración del Custom GPT "Ayuda a Paco"
 
 Guía completa para configurar el Custom GPT en OpenAI y probar el juego.
 
@@ -8,7 +8,7 @@ Guía completa para configurar el Custom GPT en OpenAI y probar el juego.
 
 ### 1. **Nombre**
 ```
-Paco el Cuñao - Hotel Villa Carmen
+Ayuda a Paco - Hotel Villa Carmen
 ```
 
 ### 2. **Descripción**

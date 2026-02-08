@@ -1,6 +1,6 @@
-# Paco el Cuñao 🏨
+# Ayuda a Paco 🏨
 
-Juego conversacional asíncrono por WhatsApp donde ayudas a Paco, un tipo entrañable que ha heredado un hotel caótico y necesita ayuda para gestionarlo.
+Juego conversacional asíncrono por WhatsApp donde ayudas a Paco, un tipo entrañable que heredó el Hotel Villa Carmen y necesita tu ayuda para gestionarlo.
 
 ## Características
 

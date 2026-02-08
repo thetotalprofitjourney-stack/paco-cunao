@@ -53,7 +53,7 @@ export default function Home() {
     return (
       <div className={styles.container}>
         <Head>
-          <title>Paco el Cuñao - Registro Completado</title>
+          <title>Ayuda a Paco - Registro Completado</title>
         </Head>
 
         <main className={styles.main}>
@@ -74,8 +74,8 @@ export default function Home() {
   return (
     <div className={styles.heroContainer}>
       <Head>
-        <title>Paco el Cuñao - Ayúdale con su hotel</title>
-        <meta name="description" content="Ayuda a Paco a gestionar su hotel heredado por WhatsApp" />
+        <title>Ayuda a Paco - Su Hotel te Necesita</title>
+        <meta name="description" content="Ayuda a Paco a gestionar el Hotel Villa Carmen que heredó en Badajoz. Juego por WhatsApp con IA." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 

@@ -324,7 +324,7 @@ await db.sponsoredMentions.create({
 
 Considera añadir en algún lugar visible (web del juego):
 
-> "Paco el Cuñao puede mencionar productos y servicios de patrocinadores
+> "Ayuda a Paco puede mencionar productos y servicios de patrocinadores
 > cuando sean relevantes para la conversación. Estas menciones son pagadas
 > pero solo aparecen cuando aportan valor al contexto del juego."
 
@@ -410,7 +410,7 @@ No, actualmente necesitas reiniciar el servidor. En el futuro se podría impleme
 
 ## 📄 Licencia y Uso
 
-Este sistema es propiedad del proyecto Paco el Cuñao.
+Este sistema es propiedad del proyecto Ayuda a Paco.
 
 Considera informar a los usuarios sobre la presencia de menciones patrocinadas para mantener la transparencia.
 
