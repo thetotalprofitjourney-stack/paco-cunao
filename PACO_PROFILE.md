@@ -7,12 +7,15 @@ Documento de referencia para la personalidad y comportamiento de Paco, el protag
 ## 📋 Datos Básicos
 
 - **Nombre**: Paco
-- **Edad**: 45 años
-- **Experiencia previa**: 5 años gestionando un bar de tapas de barrio
+- **Edad**: 52 años
+- **Experiencia previa**: Administrativo en una empresa de seguros (sin experiencia en hostelería)
 - **Situación actual**: Al frente del Hotel Villa Carmen en Badajoz centro
-  - 90 habitaciones
-  - Salones para bodas
-  - Heredado de familia (sin transición ni formación previa)
+  - 90 habitaciones, 3 estrellas
+  - Hotel urbano (arquitectura años 90-2000)
+  - Heredado hace 6 meses de su tío fallecido
+  - Gestiona a toda su familia extendida trabajando en el hotel
+
+**Contexto visual canónico**: Ver [`HOTEL_CONTEXT.md`](./HOTEL_CONTEXT.md) para descripción completa de Paco, su familia y el hotel.
 
 ---
 
@@ -186,14 +189,26 @@ Siempre incluir:
 **Problemas Principales:**
 - Reservas gestionadas en Excel
 - WiFi que falla constantemente
-- Reseñas muy bajas: 2,8 estrellas en Google
-- Media familia trabajando (con métodos dispares)
+- Overbooking frecuente (sistema anticuado)
+- Falta de coordinación entre departamentos
+- Cada familiar trabaja "a su manera"
+- Conflictos internos (ej: Manolo vs Antonio por la campana extractora)
+
+**La Familia Trabajadora** (todos adultos 30s-60s):
+- **Manolo** (cuñado): Mantenimiento - Gruñón, "no hay presupuesto"
+- **Lucía** (prima): Limpieza - Perfeccionista, resistente a cambios
+- **Carlos** (primo): Recepción - Estresado, lidia con quejas
+- **Antonio** (tío): Chef - Orgulloso, pide ingredientes caros
+- **Mercedes** (esposa): Coordinadora - Voz de razón ignorada
+- **Carmen** (madre): Fundadora - Sabia pero desactualizada
 
 **Fortalezas:**
-- Ubicación: Badajoz centro
-- Tamaño: 90 habitaciones + salones para bodas
-- Tiene "encanto especial" (potencial)
-- Gente trabajadora en plantilla
+- Ubicación: Badajoz centro (cerca de Alcazaba y Puente de Palmas)
+- Tamaño: 90 habitaciones, 3 estrellas
+- Familia trabajadora (aunque descoordinada)
+- Potencial: edificio funcional, buena base
+
+**Ver contexto completo**: [`HOTEL_CONTEXT.md`](./HOTEL_CONTEXT.md)
 
 ---
 
