@@ -2,6 +2,8 @@
 
 Esta guía te explica paso a paso cómo dar de alta tu número de WhatsApp en Meta Business y dónde introducir los datos en el proyecto.
 
+> 📌 **Actualizado con experiencia real**: Esta guía incluye soluciones a problemas comunes basadas en la configuración real del proyecto, especialmente sobre cómo conseguir que Meta acepte tus plantillas como categoría "Servicio" (gratis) en lugar de "Marketing" (de pago).
+
 ## Índice
 
 1. [Requisitos previos](#requisitos-previos)
@@ -70,11 +72,42 @@ Esta guía te explica paso a paso cómo dar de alta tu número de WhatsApp en Me
 
 ### 2.3 Completar el perfil de WhatsApp Business
 
-1. **Nombre para mostrar**: `Paco - Hotel Villa Carmen` (lo que verán los usuarios)
-2. **Descripción**: `Ayuda a Paco a gestionar su hotel respondiendo sus consultas`
-3. **Categoría**: `Servicios de hostelería` o `Entretenimiento`
-4. **Foto de perfil**: Sube una foto de Paco o del hotel
-5. **Dirección** (opcional): La dirección del hotel si es relevante
+Cuando crees la cuenta de WhatsApp Business, te pedirá estos datos:
+
+1. **Nombre para mostrar de WhatsApp Business**
+   - Sugerencia: `Paco Hotel Badajoz` o `Paco - Hotel Villa Carmen`
+   - Este es el nombre que verán los usuarios cuando les escribas
+
+2. **Categoría**
+   - Sugerencia: `Entretenimiento`
+   - Otras opciones: `Juegos`, `Servicios de entretenimiento`
+
+3. **Zona horaria**
+   - Selecciona: `(GMT+01:00) Europe/Madrid` (si estás en España)
+
+4. **Descripción de la empresa** (Opcional pero recomendado)
+   - Sugerencia:
+   ```
+   Ayuda a Paco a gestionar su hotel heredado en Badajoz.
+   Juego conversacional por WhatsApp donde tus consejos
+   cambian el rumbo de la historia.
+   ```
+   - Alternativa más corta:
+   ```
+   Experiencia interactiva de gestión hotelera.
+   Acompaña a Paco en la aventura de gestionar
+   el Hotel Villa Carmen en Badajoz.
+   ```
+
+5. **Sitio web** (Opcional)
+   - Si tienes landing page: `https://tu-dominio.com/ayuda-a-paco`
+   - Si no, déjalo vacío o pon tu web principal
+
+6. **Foto de perfil**
+   - Sube una foto de Paco o del hotel (opcional pero recomendado)
+
+7. **Dirección** (Opcional)
+   - Solo si es relevante para tu proyecto
 
 ---
 
@@ -254,45 +287,246 @@ NODE_ENV=production
 
 WhatsApp Business requiere que las conversaciones iniciadas por el negocio usen **plantillas pre-aprobadas**.
 
-### 6.1 Crear plantilla de reactivación
+### 🎯 Entender el flujo (MUY IMPORTANTE)
 
-Esta plantilla se usa para enviar el mensaje de resultados a los jugadores:
+Antes de crear la plantilla, es crucial entender cómo funciona el sistema de ventanas de conversación de WhatsApp:
+
+**Flujo correcto:**
+1. **Día 0**: Jugador da consejos a Paco
+2. **Día X** (3-14 días después): Paco envía **PLANTILLA** (push notification) ← Esto es lo que configuramos aquí
+3. **Jugador responde** → Se abre ventana de 24 horas GRATIS
+4. **Dentro de esas 24h**: Paco envía mensajes normales (NO plantillas) contando resultados + nuevo escenario
+
+**Objetivo de la plantilla:**
+- ✅ Solo debe "enganchar" al jugador para que responda
+- ✅ NO debe contar los resultados ni la historia (eso va en los mensajes posteriores)
+- ✅ Debe ser corta, intrigante, que invite a la acción
+
+**Ventajas de este enfoque:**
+- 🆓 La plantilla puede ser GRATIS (si es categoría Servicio/Utility)
+- 🆓 Los mensajes dentro de la ventana de 24h son GRATIS
+- 💰 Solo pagas (si acaso) el mensaje inicial de la plantilla
+
+---
+
+### 6.1 Crear plantilla de reactivación (paco_novedades)
+
+#### Paso 1: Acceder a plantillas
 
 1. En Meta Business Suite, ve a tu cuenta de WhatsApp
-2. Haz clic en **"Plantillas de mensajes"** o **"Message templates"**
+2. Haz clic en **"Administrador de WhatsApp"** → **"Plantillas de mensajes"**
 3. Haz clic en **"Crear plantilla"**
-4. Configuración:
-   - **Nombre**: `paco_novedades` (debe coincidir con WHATSAPP_REACTIVATION_TEMPLATE en `.env`)
-   - **Categoría**: `MARKETING` o `UTILITY`
-   - **Idiomas**: Español
 
-5. Contenido del mensaje:
-   ```
-   Hola de nuevo! Soy Paco 👋
+#### Paso 2: Elegir categoría SERVICIO (no Marketing)
 
-   Después de pensarlo bien y seguir tus consejos, te cuento qué ha pasado...
-   ```
+> ⚠️ **MUY IMPORTANTE**: Debes elegir categoría **SERVICIO** (Utility), NO Marketing
 
-6. **Botón** (opcional):
-   - Tipo: `Quick Reply`
-   - Texto: `Cuéntame más`
+**Por qué SERVICIO:**
+- 🆓 **Gratis** o muy barato (actualizaciones de servicio)
+- ✅ Mejor deliverability (Meta prioriza estos mensajes)
+- 🎯 Evita costes de mensajes Marketing (0.005€ - 0.05€ por mensaje)
 
-7. Haz clic en **"Enviar"**
-8. Meta revisará la plantilla (puede tardar 1-24 horas)
+**Configuración:**
+1. **Categoría**: Selecciona **"Servicio"** o **"Utility"**
+2. **Tipo**: Selecciona **"Predeterminado"** (envía mensajes sobre cuenta existente)
+3. Haz clic en **"Siguiente"**
 
-### 6.2 Plantilla de bienvenida (opcional)
+#### Paso 3: Configurar nombre e idioma
 
-Otra plantilla útil para dar la bienvenida a nuevos jugadores:
+1. **Nombre de la plantilla**: `paco_novedades`
 
+   > ⚠️ **IMPORTANTE**: Debe ser exactamente `paco_novedades` porque es el nombre configurado en el código del proyecto (variable `WHATSAPP_REACTIVATION_TEMPLATE`)
+
+2. **Idioma**: `Spanish` o `Español`
+
+#### Paso 4: Configurar contenido
+
+**Campos que NO debes rellenar (déjalos vacíos):**
+- ❌ **Tipo de variable**: No uses variables dinámicas como `{{1}}`, `{{2}}` (déjalo en blanco)
+- ❌ **Muestra de contenido multimedia**: Déjalo en "Ninguno" (no añadas imágenes/videos)
+- ❌ **Encabezado**: Déjalo vacío
+- ❌ **Pie de página**: Déjalo vacío (o pon "Hotel Villa Carmen" si quieres)
+
+**Campo que SÍ debes rellenar:**
+
+**Texto del mensaje:**
+
+```
+Tienes una actualización pendiente de tu sesión con Paco.
+Responde cuando puedas para continuar.
+```
+
+> ✅ **Este mensaje específico ha sido probado y FUNCIONA** - Meta lo acepta como categoría Servicio
+
+**Por qué este mensaje funciona:**
+- ✅ Suena a notificación de servicio (no promocional)
+- ✅ Es informativo y transaccional
+- ✅ No intenta "vender" ni generar engagement excesivo
+- ✅ Clara llamada a la acción necesaria para continuar el servicio
+
+#### Paso 5: Añadir botón de respuesta rápida
+
+1. En la sección **"Botones"**, haz clic en **"Añadir botón"**
+2. **Tipo**: Selecciona **"Respuesta rápida"** (Quick Reply)
+3. **Texto del botón**: `Cuéntame`
+4. Esto facilita que el jugador responda con un solo toque
+
+#### Paso 6: Configurar período de validez
+
+> ⚠️ **IMPORTANTE**: No uses el período estándar de 10 minutos
+
+1. En **"Período de validez de los mensajes"**, **activa el toggle**
+2. Configura: **7 días** (168 horas)
+
+**Por qué 7 días:**
+- ✅ El jugador tiene una semana para ver el mensaje
+- ✅ Perfecto para el ritmo asíncrono del juego (~5 intercambios/mes)
+- ✅ No es tan corto que se pierda si está ocupado
+- ✅ No es tan largo que quede obsoleto
+
+#### Paso 7: Enviar para revisión
+
+1. Revisa toda la configuración
+2. Haz clic en **"Enviar"**
+3. Meta revisará la plantilla
+
+---
+
+### ⚠️ Problema común: Reclasificación automática a Marketing
+
+**Si ves este mensaje:**
+```
+"Si envías esta plantilla se actualizará su categoría a marketing"
+```
+
+**Significa que:** Meta detectó que el mensaje suena promocional y quiere cambiarlo a categoría Marketing (de pago).
+
+**Solución:**
+1. Haz clic en **"Cancelar"**
+2. Vuelve al campo **"Texto"**
+3. Usa el mensaje que hemos probado que funciona (ver arriba)
+4. Evita palabras como:
+   - ❌ "¿tienes un momento para que te cuente?"
+   - ❌ "Han pasado cosas..."
+   - ❌ Emojis excesivos
+   - ❌ Lenguaje muy casual o promocional
+5. Usa lenguaje más neutro y tipo "notificación de servicio"
+
+**Mensajes alternativos si el principal no funciona:**
+
+**Opción 2 (más formal):**
+```
+Actualización disponible sobre tu consulta anterior al Hotel Villa Carmen.
+Responde para ver los detalles.
+```
+
+**Opción 3 (técnica):**
+```
+Nueva información disponible sobre tu caso.
+Responde para acceder a los detalles.
+```
+
+---
+
+### 📊 Tiempo de revisión
+
+- ⚡ **Rápido**: 15 minutos - 2 horas
+- 📊 **Normal**: 2-6 horas
+- 🐌 **Lento**: Hasta 24 horas
+
+**Ver estado:**
+Meta Business → Administrador de WhatsApp → Plantillas de mensajes
+
+**Estados posibles:**
+- 🟡 **En revisión**: Meta está evaluando la plantilla
+- 🟢 **Aprobada**: Lista para usar
+- 🔴 **Rechazada**: Revisa el motivo y edita el contenido
+
+---
+
+### 💰 Costes según categoría (2026)
+
+Desde julio 2025, WhatsApp cambió a precio por mensaje:
+
+| Categoría | Coste (España) | Cuándo se cobra |
+|-----------|----------------|-----------------|
+| **Servicio/Utility** | 🆓 Gratis dentro de ventana de 24h<br>~€0.005-0.01 fuera de ventana | Solo fuera de conversación activa |
+| **Marketing** | 💰 €0.03-0.05 por mensaje | Siempre, cada envío |
+| **Autenticación** | 🆓 Gratis | Siempre |
+
+**Ejemplo de ahorro (100 jugadores, 5 notificaciones/mes):**
+- Con **Servicio**: ~€2.50/mes (si el 100% responde, es gratis)
+- Con **Marketing**: ~€15-25/mes
+- **Ahorro**: ~€12.50-22.50/mes
+
+---
+
+### 6.2 Probar la plantilla una vez aprobada
+
+Cuando Meta apruebe la plantilla, pruébala:
+
+```bash
+# Conecta a tu servidor y ejecuta:
+cd /ruta/a/paco-cunao
+
+node -e "
+const meta = require('./src/services/whatsapp/meta');
+meta.sendTemplate('+34XXXXXXXXX', 'paco_novedades', 'es')
+  .then(r => console.log('✅ Plantilla enviada:', r))
+  .catch(e => console.error('❌ Error:', e));
+"
+```
+
+**Reemplaza** `+34XXXXXXXXX` con tu número de prueba.
+
+---
+
+### 6.3 Plantilla de bienvenida (opcional)
+
+Esta plantilla es para cuando un jugador nuevo se registra:
+
+**Configuración:**
 - **Nombre**: `bienvenida_paco`
-- **Contenido**:
-  ```
-  Hola {{1}}! Soy Paco 😊
+- **Categoría**: **Servicio** (también debe ser Servicio, no Marketing)
+- **Idioma**: Español
 
-  Acabo de heredar el Hotel Villa Carmen de mi tío y... bueno, no tengo ni idea de hostelería.
+**Contenido:**
+```
+Hola! Soy Paco del Hotel Villa Carmen.
 
-  Necesito tu ayuda para tomar decisiones. ¿Me echas una mano?
-  ```
+Gracias por registrarte. Responde cuando estés listo para empezar.
+```
+
+**Botón:**
+- Tipo: Respuesta rápida
+- Texto: `Empezar`
+
+---
+
+### 📋 Resumen de configuración de plantilla
+
+```
+Nombre:                 paco_novedades
+Categoría:              Servicio / Utility (NO Marketing)
+Idioma:                 Spanish
+Texto:                  "Tienes una actualización pendiente de tu
+                        sesión con Paco. Responde cuando puedas
+                        para continuar."
+Botón:                  "Cuéntame" (respuesta rápida)
+Variables:              Ninguna (no usar {{1}}, {{2}}, etc.)
+Multimedia:             Ninguno
+Encabezado:             Vacío
+Pie de página:          Vacío (o "Hotel Villa Carmen")
+Período validez:        7 días (168 horas)
+```
+
+---
+
+### 🔗 Documentación oficial sobre categorías
+
+- [Template Categorization - Meta](https://developers.facebook.com/docs/whatsapp/business-management-api/message-templates)
+- [Utility vs Marketing Guidelines](https://business.whatsapp.com/products/platform-pricing)
+- [2025 Pricing Changes](https://developers.facebook.com/docs/whatsapp/pricing)
 
 ---
 
@@ -378,12 +612,39 @@ meta.sendMessage('+34XXXXXXXXX', 'Hola! Este es un mensaje de prueba de Paco')
 - Asegúrate de que el número esté verificado en Meta Business
 - Comprueba que uses el Phone Number ID, no el número de teléfono
 
-### Problema: "Template not approved"
+### Problema: "Template not approved" o rechazada
 
 **Solución:**
 - Las plantillas pueden tardar hasta 24 horas en aprobarse
 - Revisa que no contengan URLs sospechosas o contenido prohibido
 - Comprueba el estado en Meta Business → Plantillas de mensajes
+- Si fue rechazada, edita el contenido y vuelve a enviar
+
+### Problema: Meta quiere cambiar la plantilla a categoría "Marketing"
+
+**Síntoma:**
+Al enviar la plantilla ves: "Si envías esta plantilla se actualizará su categoría a marketing"
+
+**Causa:**
+Meta detectó que el mensaje suena promocional en lugar de transaccional/informativo.
+
+**Solución:**
+1. Haz clic en **"Cancelar"** (no aceptes el cambio a Marketing)
+2. Usa el mensaje probado que funciona:
+   ```
+   Tienes una actualización pendiente de tu sesión con Paco.
+   Responde cuando puedas para continuar.
+   ```
+3. Evita:
+   - ❌ Lenguaje demasiado casual o promocional
+   - ❌ Emojis excesivos
+   - ❌ Frases tipo "¿tienes un momento?"
+   - ❌ Intentar "enganchar" en exceso
+4. Usa lenguaje más neutro y tipo "notificación de servicio"
+
+**Si sigue sin funcionar:**
+- Prueba con mensajes más formales (ver alternativas en sección 6.1)
+- Como último recurso, acepta que sea Marketing (evalúa costes)
 
 ### Problema: No recibo webhooks
 
@@ -408,12 +669,22 @@ Después de seguir esta guía, habrás modificado:
    ```
 
 2. **Meta Business** - Configuración:
-   - Cuenta de WhatsApp Business creada
-   - Número verificado
-   - App de Facebook creada
-   - Webhook configurado y verificado
-   - Eventos suscritos (messages)
-   - Plantillas creadas y aprobadas
+   - ✅ Cuenta de WhatsApp Business creada
+   - ✅ Número verificado y perfil completado
+   - ✅ App de Facebook creada
+   - ✅ Webhook configurado y verificado
+   - ✅ Eventos suscritos (messages, message_status)
+   - ✅ Plantilla `paco_novedades` creada y aprobada (categoría: Servicio)
+
+3. **Plantilla aprobada**:
+   ```
+   Nombre: paco_novedades
+   Categoría: Servicio/Utility
+   Texto: "Tienes una actualización pendiente de tu sesión con Paco.
+           Responde cuando puedas para continuar."
+   Botón: "Cuéntame"
+   Validez: 7 días
+   ```
 
 ---
 
