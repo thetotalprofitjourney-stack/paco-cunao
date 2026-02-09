@@ -309,7 +309,7 @@ Antes de crear la plantilla, es crucial entender cómo funciona el sistema de ve
 
 ---
 
-### 6.1 Crear plantilla de reactivación (paco_novedades)
+### 6.1 Crear plantilla de reactivación (paco_confirmacion)
 
 #### Paso 1: Acceder a plantillas
 
@@ -333,9 +333,9 @@ Antes de crear la plantilla, es crucial entender cómo funciona el sistema de ve
 
 #### Paso 3: Configurar nombre e idioma
 
-1. **Nombre de la plantilla**: `paco_novedades`
+1. **Nombre de la plantilla**: `paco_confirmacion`
 
-   > ⚠️ **IMPORTANTE**: Debe ser exactamente `paco_novedades` porque es el nombre configurado en el código del proyecto (variable `WHATSAPP_REACTIVATION_TEMPLATE`)
+   > ⚠️ **IMPORTANTE**: Debe ser exactamente `paco_confirmacion` porque es el nombre configurado en el código del proyecto (variable `WHATSAPP_REACTIVATION_TEMPLATE`)
 
 2. **Idioma**: `Spanish` o `Español`
 
@@ -352,24 +352,33 @@ Antes de crear la plantilla, es crucial entender cómo funciona el sistema de ve
 **Texto del mensaje:**
 
 ```
-Tienes una actualización pendiente de tu sesión con Paco.
-Responde cuando puedas para continuar.
+Actualización del Hotel Villa Carmen.
+
+Paco ha revisado tu situación y tiene información nueva.
 ```
 
 > ✅ **Este mensaje específico ha sido probado y FUNCIONA** - Meta lo acepta como categoría Servicio
 
 **Por qué este mensaje funciona:**
-- ✅ Suena a notificación de servicio (no promocional)
-- ✅ Es informativo y transaccional
-- ✅ No intenta "vender" ni generar engagement excesivo
-- ✅ Clara llamada a la acción necesaria para continuar el servicio
+- ✅ "Actualización" = palabra clave transaccional (Utility-friendly)
+- ✅ "ha revisado" = acción completada (pasado), no engagement futuro
+- ✅ Mantiene a Paco como protagonista sin ser demasiado casual
+- ✅ "información nueva" es informativo, no pide acción directa
+- ✅ Sin botones ni llamadas a la acción que Meta detecte como engagement
 
-#### Paso 5: Añadir botón de respuesta rápida
+#### Paso 5: Añadir botón de respuesta rápida (OPCIONAL)
 
+> ⚠️ **RECOMENDACIÓN**: Para maximizar las posibilidades de que Meta acepte la plantilla como Servicio, **NO añadas botón**. Los botones pueden verse como engagement.
+
+**Si decides añadir un botón (úsalo con precaución):**
 1. En la sección **"Botones"**, haz clic en **"Añadir botón"**
 2. **Tipo**: Selecciona **"Respuesta rápida"** (Quick Reply)
-3. **Texto del botón**: `Cuéntame`
-4. Esto facilita que el jugador responda con un solo toque
+3. **Texto del botón**:
+   - ✅ `Ver detalles` (neutro, informativo)
+   - ✅ `Revisar` (pasivo)
+   - ✅ `Acceder` (transaccional)
+   - ❌ `Cuéntame` (demasiado engagement)
+   - ❌ `Dime más` (demasiado casual)
 
 #### Paso 6: Configurar período de validez
 
@@ -414,16 +423,26 @@ Responde cuando puedas para continuar.
 
 **Mensajes alternativos si el principal no funciona:**
 
-**Opción 2 (más formal):**
+**Opción 2 (más natural con botón):**
 ```
-Actualización disponible sobre tu consulta anterior al Hotel Villa Carmen.
-Responde para ver los detalles.
+Paco ha actualizado tu consulta del Hotel Villa Carmen.
+
+Información disponible sobre los últimos acontecimientos.
+```
+Botón: "Ver detalles"
+
+**Opción 3 (con contexto del juego):**
+```
+Confirmación - Hotel Villa Carmen.
+
+Paco ha aplicado tus consejos y tiene resultados de la situación.
 ```
 
-**Opción 3 (técnica):**
+**Opción 4 (ultra neutral si todo falla):**
 ```
-Nueva información disponible sobre tu caso.
-Responde para acceder a los detalles.
+Tu sesión del Hotel Villa Carmen ha sido actualizada.
+
+Estado: Paco ha procesado tu último mensaje.
 ```
 
 ---
@@ -471,7 +490,7 @@ cd /ruta/a/paco-cunao
 
 node -e "
 const meta = require('./src/services/whatsapp/meta');
-meta.sendTemplate('+34XXXXXXXXX', 'paco_novedades', 'es')
+meta.sendTemplate('+34XXXXXXXXX', 'paco_confirmacion', 'es')
   .then(r => console.log('✅ Plantilla enviada:', r))
   .catch(e => console.error('❌ Error:', e));
 "
@@ -506,13 +525,14 @@ Gracias por registrarte. Responde cuando estés listo para empezar.
 ### 📋 Resumen de configuración de plantilla
 
 ```
-Nombre:                 paco_novedades
+Nombre:                 paco_confirmacion
 Categoría:              Servicio / Utility (NO Marketing)
 Idioma:                 Spanish
-Texto:                  "Tienes una actualización pendiente de tu
-                        sesión con Paco. Responde cuando puedas
-                        para continuar."
-Botón:                  "Cuéntame" (respuesta rápida)
+Texto:                  "Actualización del Hotel Villa Carmen.
+
+                        Paco ha revisado tu situación y tiene
+                        información nueva."
+Botón:                  Ninguno (recomendado) o "Ver detalles"
 Variables:              Ninguna (no usar {{1}}, {{2}}, etc.)
 Multimedia:             Ninguno
 Encabezado:             Vacío
@@ -674,15 +694,15 @@ Después de seguir esta guía, habrás modificado:
    - ✅ App de Facebook creada
    - ✅ Webhook configurado y verificado
    - ✅ Eventos suscritos (messages, message_status)
-   - ✅ Plantilla `paco_novedades` creada y aprobada (categoría: Servicio)
+   - ✅ Plantilla `paco_confirmacion` creada y aprobada (categoría: Servicio)
 
 3. **Plantilla aprobada**:
    ```
-   Nombre: paco_novedades
+   Nombre: paco_confirmacion
    Categoría: Servicio/Utility
-   Texto: "Tienes una actualización pendiente de tu sesión con Paco.
-           Responde cuando puedas para continuar."
-   Botón: "Cuéntame"
+   Texto: "Actualización del Hotel Villa Carmen.
+           Paco ha revisado tu situación y tiene información nueva."
+   Botón: Ninguno (recomendado)
    Validez: 7 días
    ```
 
