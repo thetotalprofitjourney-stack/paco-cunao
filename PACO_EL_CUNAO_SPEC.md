@@ -22,7 +22,7 @@ El juego funciona íntegramente por WhatsApp. El jugador da consejos, Paco los i
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   Web Registro  │────▶│    Backend      │────▶│   PostgreSQL    │
+│   Web Registro  │────▶│    Backend      │────▶│   MariaDB    │
 │   (Next.js)     │     │   (Node.js)     │     │                 │
 └─────────────────┘     └────────┬────────┘     └─────────────────┘
                                  │
@@ -40,7 +40,7 @@ El juego funciona íntegramente por WhatsApp. El jugador da consejos, Paco los i
 |------------|------------|---------|
 | Web Registro | Next.js | Landing + formulario registro |
 | Backend API | Node.js + Fastify | Lógica de juego, webhooks |
-| Base de datos | PostgreSQL | Jugadores, partidas, mensajes |
+| Base de datos | MariaDB | Jugadores, partidas, mensajes |
 | Cola de trabajos | Redis + BullMQ | Timers (3h, 3-7 días) |
 | Mensajería | WhatsApp Business API (360dialog) | Envío/recepción mensajes |
 | IA | OpenAI GPT-4o-mini / Groq | Generación respuestas Paco |
@@ -132,7 +132,7 @@ Estado: WAITING_PLAYER (nuevo ciclo)
 
 ---
 
-## 4. MODELO DE DATOS (PostgreSQL)
+## 4. MODELO DE DATOS (MariaDB)
 
 ### 4.1 Tabla: users
 
@@ -794,7 +794,7 @@ paco-el-cunao/
 ├── README.md
 ├── package.json
 ├── .env.example
-├── docker-compose.yml          # PostgreSQL + Redis para desarrollo
+├── docker-compose.yml          # MariaDB + Redis para desarrollo
 │
 ├── src/
 │   ├── index.js                # Entry point Fastify
@@ -803,7 +803,7 @@ paco-el-cunao/
 │   │   └── constants.js        # Constantes del juego
 │   │
 │   ├── db/
-│   │   ├── client.js           # Conexion PostgreSQL
+│   │   ├── client.js           # Conexion MariaDB
 │   │   ├── migrations/         # Migraciones SQL
 │   │   │   ├── 001_users.sql
 │   │   │   ├── 002_games.sql
@@ -878,7 +878,7 @@ paco-el-cunao/
 # .env.example
 
 # Base de datos
-DATABASE_URL=postgresql://user:pass@localhost:5432/paco_el_cunao
+DATABASE_URL=mysql://user:pass@localhost:5432/paco_el_cunao
 
 # Redis (para BullMQ)
 REDIS_URL=redis://localhost:6379
@@ -927,7 +927,7 @@ MAX_KEY_EVENTS=50                     # Maximo de eventos antes de comprimir
 # Instalar dependencias
 npm install
 
-# Levantar PostgreSQL + Redis con Docker
+# Levantar MariaDB + Redis con Docker
 docker-compose up -d
 
 # Ejecutar migraciones
@@ -949,7 +949,7 @@ npm test
 
 ### Fase 1: Infraestructura basica
 - [ ] Configurar proyecto Node.js + Fastify
-- [ ] Configurar PostgreSQL y crear tablas
+- [ ] Configurar MariaDB y crear tablas
 - [ ] Configurar Redis + BullMQ
 - [ ] Implementar health check
 - [ ] Docker compose para desarrollo local

@@ -249,7 +249,7 @@ Asegúrate de que también estén configuradas:
 
 ```bash
 # Base de datos
-DATABASE_URL=postgresql://user:password@localhost:5432/paco_el_cunao
+DATABASE_URL=mysql://user:password@localhost:3306/paco_el_cunao
 
 # Redis (para BullMQ)
 REDIS_URL=redis://localhost:6379

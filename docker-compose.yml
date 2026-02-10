@@ -1,18 +1,24 @@
 version: '3.8'
 
+# NOTA: Este archivo es solo para desarrollo local
+# En producción, MariaDB se instala en el host (gestionado por Plesk)
+# y Redis se ejecuta con Docker (ver docker/start-redis.sh)
+
 services:
-  postgres:
-    image: postgres:15-alpine
-    container_name: paco-postgres
+  mariadb:
+    image: mariadb:11.2
+    container_name: paco-mariadb
     environment:
-      POSTGRES_USER: paco
-      POSTGRES_PASSWORD: paco123
-      POSTGRES_DB: paco_el_cunao
+      MYSQL_ROOT_PASSWORD: paco123
+      MYSQL_DATABASE: paco_el_cunao
+      MYSQL_USER: paco
+      MYSQL_PASSWORD: paco123
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mariadb_data:/var/lib/mysql
     restart: unless-stopped
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   redis:
     image: redis:7-alpine
@@ -24,5 +30,5 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres_data:
+  mariadb_data:
   redis_data:

@@ -1,6 +1,5 @@
 -- Añadir campo metadata a la tabla messages
-ALTER TABLE messages ADD COLUMN IF NOT EXISTS metadata JSONB;
+ALTER TABLE messages ADD COLUMN IF NOT EXISTS metadata JSON;
 
--- Añadir el nuevo tipo de mensaje 'reactivation'
--- (Ya está en la lógica, pero documentamos que es válido)
-COMMENT ON COLUMN messages.message_type IS 'player_input | trigger | ack | reactivation | results';
+-- Actualizar el comentario del campo message_type para incluir 'reactivation'
+ALTER TABLE messages MODIFY COLUMN message_type VARCHAR(20) COMMENT 'player_input | trigger | ack | reactivation | results';
