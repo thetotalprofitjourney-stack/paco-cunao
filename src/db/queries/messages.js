@@ -1,4 +1,5 @@
 const db = require('../client');
+const { v4: uuidv4 } = require('uuid');
 
 const createMessage = async ({
   gameId,
@@ -11,15 +12,16 @@ const createMessage = async ({
   tokensOutput = null,
   metadata = null,
 }) => {
+  const id = uuidv4();
   const query = `
     INSERT INTO messages (
-      game_id, cycle, direction, message_type, content,
+      id, game_id, cycle, direction, message_type, content,
       wa_message_id, tokens_input, tokens_output, metadata, created_at
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())
-    RETURNING *
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, CURRENT_TIMESTAMP)
   `;
-  const result = await db.query(query, [
+  await db.query(query, [
+    id,
     gameId,
     cycle,
     direction,
@@ -28,8 +30,12 @@ const createMessage = async ({
     waMessageId,
     tokensInput,
     tokensOutput,
-    metadata,
+    metadata ? JSON.stringify(metadata) : null,
   ]);
+
+  // Devolver el mensaje recién creado
+  const selectQuery = 'SELECT * FROM messages WHERE id = $1';
+  const result = await db.query(selectQuery, [id]);
   return result.rows[0];
 };
 

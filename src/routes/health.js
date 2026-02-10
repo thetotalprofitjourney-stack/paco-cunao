@@ -11,7 +11,7 @@ async function healthRoutes(fastify, options) {
       whatsapp: 'configured',
     };
 
-    // Check PostgreSQL
+    // Check MariaDB
     try {
       await db.query('SELECT 1');
       health.db = 'connected';

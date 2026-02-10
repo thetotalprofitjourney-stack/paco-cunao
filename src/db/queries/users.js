@@ -1,13 +1,15 @@
 const db = require('../client');
+const { v4: uuidv4 } = require('uuid');
 
 const createUser = async ({ phone, name }) => {
+  const id = uuidv4();
   const query = `
-    INSERT INTO users (phone, name, status, created_at)
-    VALUES ($1, $2, 'pending_activation', NOW())
-    RETURNING *
+    INSERT INTO users (id, phone, name, status, created_at)
+    VALUES ($1, $2, $3, 'pending_activation', CURRENT_TIMESTAMP)
   `;
-  const result = await db.query(query, [phone, name]);
-  return result.rows[0];
+  await db.query(query, [id, phone, name]);
+  // Devolvemos el usuario recién creado
+  return getUserById(id);
 };
 
 const getUserByPhone = async (phone) => {
@@ -25,23 +27,21 @@ const getUserById = async (id) => {
 const updateUserStatus = async (id, status) => {
   const query = `
     UPDATE users
-    SET status = $1, last_activity_at = NOW()
+    SET status = $1, last_activity_at = CURRENT_TIMESTAMP
     WHERE id = $2
-    RETURNING *
   `;
-  const result = await db.query(query, [status, id]);
-  return result.rows[0];
+  await db.query(query, [status, id]);
+  return getUserById(id);
 };
 
 const updateUserActivity = async (id) => {
   const query = `
     UPDATE users
-    SET last_activity_at = NOW()
+    SET last_activity_at = CURRENT_TIMESTAMP
     WHERE id = $1
-    RETURNING *
   `;
-  const result = await db.query(query, [id]);
-  return result.rows[0];
+  await db.query(query, [id]);
+  return getUserById(id);
 };
 
 module.exports = {
