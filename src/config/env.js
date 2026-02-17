@@ -12,6 +12,7 @@ module.exports = {
   whatsapp360ApiKey: process.env.WHATSAPP_360_API_KEY,
   whatsapp360WebhookToken: process.env.WHATSAPP_360_WEBHOOK_TOKEN,
   whatsappMetaToken: process.env.WHATSAPP_META_TOKEN,
+  whatsappAppSecret: process.env.WHATSAPP_APP_SECRET,
   whatsappPhoneNumberId: process.env.WHATSAPP_PHONE_NUMBER_ID,
   whatsappVerifyToken: process.env.WHATSAPP_VERIFY_TOKEN,
   whatsappReactivationTemplate: process.env.WHATSAPP_REACTIVATION_TEMPLATE || 'paco_novedades',
