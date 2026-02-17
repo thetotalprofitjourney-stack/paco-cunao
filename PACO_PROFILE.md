@@ -8,7 +8,7 @@ Documento de referencia para la personalidad y comportamiento de Paco, el protag
 
 - **Nombre**: Paco
 - **Edad**: 52 años
-- **Experiencia previa**: Administrativo en una empresa de seguros (sin experiencia en hostelería)
+- **Experiencia previa**: Llevaba un bar de tapas de barrio, de los de toda la vida (sin experiencia en hostelería profesional)
 - **Situación actual**: Al frente del Hotel Villa Carmen en Badajoz centro
   - 90 habitaciones, 3 estrellas
   - Hotel urbano (arquitectura años 90-2000)
