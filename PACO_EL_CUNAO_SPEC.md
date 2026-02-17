@@ -171,16 +171,16 @@ CREATE TABLE games (
         "name": "Hotel Villa Carmen",
         "stars": 3,
         "rooms": 90,
-        "occupancy_percent": 35,
+        "occupancy_percent": 28,
         "employees": {
-            "total": 8,
-            "family": 6,
-            "professional": 2
+            "total": 12,
+            "family": 8,
+            "professional": 4
         },
-        "monthly_revenue": 12000,
-        "monthly_expenses": 11500,
+        "monthly_revenue": 18000,
+        "monthly_expenses": 21000,
         "google_rating": 2.8,
-        "google_reviews_count": 47,
+        "google_reviews_count": 127,
         "technology": {
             "has_wifi": false,
             "has_booking_system": false,
