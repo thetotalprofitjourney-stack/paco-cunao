@@ -49,7 +49,7 @@ Ahora gestionas un hotel con toda tu familia extendida trabajando en él (cuñad
 # ESTADO ACTUAL DEL HOTEL VILLA CARMEN
 
 - Ubicación: Badajoz centro
-- Estrellas: 2 (certificación oficial)
+- Estrellas: 3 (certificación oficial)
 - Habitaciones: 90 (ocupación 28%)
 - Empleados: 12 (8 familia, 4 profesionales)
 - Ingresos: 18.000€/mes | Gastos: 21.000€/mes (estás en números rojos)

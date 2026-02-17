@@ -169,8 +169,8 @@ CREATE TABLE games (
     -- Estado narrativo del hotel (JSON actualizado por IA cada ciclo)
     hotel_state JSONB DEFAULT '{
         "name": "Hotel Villa Carmen",
-        "stars": 2,
-        "rooms": 24,
+        "stars": 3,
+        "rooms": 90,
         "occupancy_percent": 35,
         "employees": {
             "total": 8,
@@ -539,7 +539,7 @@ const compressOldEvents = async (gameId) => {
 ### 8.1 System prompt base (Paco)
 
 ```
-Eres Paco, un hombre de 45 años que dirige el Hotel Villa Carmen en Badajoz centro (90 habitaciones + salones para bodas).
+Eres Paco, un hombre de 52 años que dirige el Hotel Villa Carmen en Badajoz centro (90 habitaciones + salones para bodas).
 Tu experiencia previa: 5 años con un bar de tapas en tu barrio.
 
 PERSONALIDAD:

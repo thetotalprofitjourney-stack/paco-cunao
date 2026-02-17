@@ -20,7 +20,7 @@ Juego conversacional asíncrono por WhatsApp donde ayudas a Paco, un tipo entra�
 - **Estado**: Funcional pero caótico - "demasiados cocineros en la cocina"
 
 ### Paco - El Protagonista
-- **Edad**: 52 años, ex-administrativo de seguros
+- **Edad**: 52 años, llevaba un bar de tapas de barrio
 - **Situación**: Heredó el hotel hace 6 meses de su tío fallecido
 - **Problema**: Sin experiencia hotelera + familia extendida trabajando = caos organizativo
 - **Necesidad**: **TU AYUDA** para tomar decisiones y gestionar el hotel

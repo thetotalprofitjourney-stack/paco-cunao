@@ -87,7 +87,7 @@ Aspect ratio: 16:9 wide landscape format for full-page web hero section
 - **Mediador familiar**: Intenta que todos se lleven bien (con poco éxito)
 
 ### Historia
-Paco trabajaba como **administrativo en una empresa de seguros** hasta que hace 6 meses heredó el Hotel Villa Carmen de su tío fallecido. No tenía experiencia en hostelería, pero la familia esperaba que él "mantuviera el negocio familiar vivo". Ahora lidia con:
+Paco llevaba un **bar de tapas de barrio, de los de toda la vida** hasta que hace 6 meses heredó el Hotel Villa Carmen de su tío fallecido. No tenía experiencia en hostelería profesional, pero la familia esperaba que él "mantuviera el negocio familiar vivo". Ahora lidia con:
 - 90 habitaciones que gestionar
 - Una familia extendida trabajando en el hotel (cada uno con su opinión)
 - Sistemas obsoletos que no entiende
