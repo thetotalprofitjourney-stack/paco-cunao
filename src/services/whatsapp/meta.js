@@ -1,7 +1,31 @@
+const crypto = require('crypto');
 const env = require('../../config/env');
 
-const getApiUrl = () =>
-  `https://graph.facebook.com/v18.0/${env.whatsappPhoneNumberId}/messages`;
+/**
+ * Genera el appsecret_proof para mayor seguridad en las llamadas a la API
+ * @returns {string} Hash HMAC-SHA256 del token de acceso
+ */
+const generateAppSecretProof = () => {
+  if (!env.whatsappAppSecret) {
+    return null;
+  }
+  return crypto
+    .createHmac('sha256', env.whatsappAppSecret)
+    .update(env.whatsappMetaToken)
+    .digest('hex');
+};
+
+const getApiUrl = () => {
+  const baseUrl = `https://graph.facebook.com/v18.0/${env.whatsappPhoneNumberId}/messages`;
+  const proof = generateAppSecretProof();
+
+  // Si hay App Secret configurado, incluir appsecret_proof
+  if (proof) {
+    return `${baseUrl}?appsecret_proof=${proof}`;
+  }
+
+  return baseUrl;
+};
 
 const sendTemplate = async (phone, templateName, languageCode = 'es', components = []) => {
   try {

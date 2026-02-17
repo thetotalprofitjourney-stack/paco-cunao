@@ -274,10 +274,12 @@ Vuelve a Fase 1 con nueva situación emergente
 
 1. Configura WhatsApp Business en [Meta Business Suite](https://business.facebook.com/)
 2. Obtén tu token y phone number ID
-3. Actualiza `.env`:
+3. **Importante**: Obtén el App Secret desde Meta Business → Configuración → Básica
+4. Actualiza `.env`:
    ```
    WHATSAPP_PROVIDER=meta
    WHATSAPP_META_TOKEN=tu_token
+   WHATSAPP_APP_SECRET=tu_app_secret
    WHATSAPP_PHONE_NUMBER_ID=tu_phone_id
    WHATSAPP_VERIFY_TOKEN=tu_verify_token
    ```
@@ -289,6 +291,7 @@ Vuelve a Fase 1 con nueva situación emergente
 | `DATABASE_URL` | URL de conexión a MariaDB (formato: `mysql://user:password@host:3306/database`) |
 | `REDIS_URL` | URL de conexión a Redis (formato: `redis://host:6379`) |
 | `WHATSAPP_PROVIDER` | Proveedor de WhatsApp (360dialog o meta) |
+| `WHATSAPP_APP_SECRET` | App Secret de Meta (requerido para seguridad adicional) |
 | `OPENAI_API_KEY` | API Key de OpenAI |
 | `CONSOLIDATION_WINDOW_MS` | Tiempo de espera para consolidar mensajes (default: 30min) |
 | `NIGHT_START_HOUR` | Hora de inicio del horario nocturno (default: 22) |
@@ -499,6 +502,7 @@ REDIS_URL=redis://127.0.0.1:6379
 # WhatsApp (configurar según tu proveedor)
 WHATSAPP_PROVIDER=meta
 WHATSAPP_META_TOKEN=tu_token_de_meta
+WHATSAPP_APP_SECRET=tu_app_secret_de_meta
 WHATSAPP_PHONE_NUMBER_ID=tu_phone_id
 WHATSAPP_VERIFY_TOKEN=tu_verify_token_seguro
 WHATSAPP_NUMBER=+34XXXXXXXXX
