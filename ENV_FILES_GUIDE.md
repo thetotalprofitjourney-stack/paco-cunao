@@ -40,11 +40,17 @@ El archivo `.env.template.production` contiene:
 ```bash
 WHATSAPP_PROVIDER=meta
 WHATSAPP_META_TOKEN=EAFtWYZ... (Token permanente sin vencimiento)
+WHATSAPP_APP_SECRET=eecb7d109491ffe0ce9772e2afe91bc2 (App Secret - requerido para seguridad)
 WHATSAPP_PHONE_NUMBER_ID=1029054796951741
 WHATSAPP_VERIFY_TOKEN=47e81b7b...
 WHATSAPP_REACTIVATION_TEMPLATE=paco_confirmacion_2
 WHATSAPP_NUMBER=+34 679 32 76 17
 ```
+
+**Nota de Seguridad:**
+- El `WHATSAPP_APP_SECRET` es **obligatorio** porque la opción "Clave secreta de la aplicación obligatoria" está activada en Meta Business.
+- Se usa para generar el `appsecret_proof` (hash HMAC-SHA256) en todas las llamadas a la API.
+- Obtener desde: Meta Business Manager → App Paco_backend → Configuración → Básica → "Clave secreta de la aplicación"
 
 ### **OpenAI:**
 ```bash
@@ -83,7 +89,7 @@ cp .env.template.production .env
 nano .env
 
 # Verificar que las credenciales son correctas:
-# ✅ WhatsApp: Ya configurado
+# ✅ WhatsApp: Ya configurado (incluyendo WHATSAPP_APP_SECRET)
 # ✅ OpenAI: Ya configurado
 # ⚠️ DATABASE_URL: Actualizar con password real de MariaDB
 # ⚠️ REDIS_URL: Verificar que Redis está en localhost:6379
