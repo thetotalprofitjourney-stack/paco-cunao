@@ -89,7 +89,7 @@ export default function Home() {
       <div className={styles.formBar}>
         <form className={styles.inlineForm} onSubmit={handleSubmit}>
           <div className={styles.formTitle}>
-            <h2>Ayuda a Paco</h2>
+            <h2>Todos hemos sido Paco alguna vez, ayúdale</h2>
             <button
               type="button"
               className={styles.infoButton}
@@ -123,7 +123,7 @@ export default function Home() {
               </svg>
               <input
                 type="tel"
-                placeholder="+34 612 345 678"
+                placeholder="+34612345678"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
@@ -154,11 +154,10 @@ export default function Home() {
             </button>
             <h3>¿En qué consiste?</h3>
             <div className={styles.modalBody}>
-              <p>🎮 <strong>Un juego por WhatsApp</strong> donde ayudas a Paco a gestionar el Hotel Villa Carmen que acaba de heredar.</p>
-              <p>📱 <strong>Recibirás ~5 mensajes al mes</strong> con situaciones reales del hotel. Paco te pedirá consejo y actuará según lo que le digas.</p>
-              <p>⏱️ <strong>Ritmo tranquilo, sin presión</strong>. Cada decisión cuenta, pero juegas a tu ritmo.</p>
-              <p>🔒 <strong>Privacidad garantizada</strong>. Tus datos solo se usan para el juego. Puedes salir cuando quieras bloqueando el número.</p>
-              <p>✨ <strong>Cada partida es única</strong>. La IA hace que Paco responda de forma diferente según tus consejos.</p>
+              <p>🎮 <strong>Un juego por WhatsApp</strong>, donde ayudas a Paco a gestionar el Hotel Villa Carmen que acaba de heredar.</p>
+              <p>✨ <strong>Cada Paco es único</strong>. Él y su hotel irán evolucionando en función de los consejos que le vayas dando.</p>
+              <p>⏱️ <strong>Ritmo tranquilo, sin presión, ~4 whatsapps al mes</strong>. Cada decisión cuenta, y Paco tiene que implementar cada acción que le recomiendes, lo que le llevará días.</p>
+              <p>🔒 <strong>Privacidad garantizada</strong>. Tus datos sólo se usan para el juego. Puedes salir cuando quieras bloqueando el número o dejando de escribirle.</p>
             </div>
           </div>
         </div>
