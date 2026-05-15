@@ -28,7 +28,7 @@ async function registerRoutes(fastify, options) {
       if (existingUser) {
         return reply.code(409).send({
           success: false,
-          error: 'Este número ya está registrado. Si eres tú, ya puedes escribir a Paco directamente. Si no, habla con Antonio o Raquel de La Comunidad TPM',
+          error: 'duplicate_phone',
         });
       }
 
