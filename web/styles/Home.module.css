@@ -354,6 +354,15 @@
   margin: 1rem 0 !important;
 }
 
+.errorLink {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.errorLink:hover {
+  text-decoration: underline;
+}
+
 .whatsappButton {
   display: flex;
   align-items: center;

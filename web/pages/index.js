@@ -30,7 +30,7 @@ export default function Home() {
         setSuccess(true);
         setInstructions(data.instructions);
       } else {
-        setError(data.error || 'No se ha podido completar el registro. Comprueba los datos e inténtalo de nuevo');
+        setError(data.error || 'generic');
       }
     } catch (err) {
       setError('Error de conexión. Inténtalo de nuevo.');
@@ -86,7 +86,19 @@ export default function Home() {
             </button>
           </div>
 
-          {error && <div className={styles.errorInline}>{error}</div>}
+          {error && (
+            <div className={styles.errorInline}>
+              {error === 'duplicate_phone' ? (
+                <>
+                  Este número ya está registrado. Si eres tú, ya puedes escribir a Paco directamente por WhatsApp. Si no, manda un email a{' '}
+                  <a href="mailto:info@totalprofitjourney.com" className={styles.errorLink}>info@totalprofitjourney.com</a>
+                  {' '}y Antonio o Raquel te podrán ayudar.
+                </>
+              ) : (
+                'No se ha podido completar el registro. Comprueba los datos e inténtalo de nuevo.'
+              )}
+            </div>
+          )}
 
           <div className={styles.formInputs}>
             <input
