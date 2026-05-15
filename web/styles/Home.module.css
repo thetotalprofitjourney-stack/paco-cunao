@@ -354,6 +354,30 @@
   margin: 1rem 0 !important;
 }
 
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1.75rem;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.whatsappButton:hover {
+  background: #1ebe5d;
+  transform: translateY(-1px);
+}
+
+.whatsappButton:active {
+  transform: translateY(0);
+}
+
 /* Responsive breakpoints */
 @media (max-width: 768px) {
   .formBar {
